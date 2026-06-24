@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.crimevariavel.controller.UpgradesController"
+      alignment="CENTER" spacing="18" prefWidth="800" prefHeight="600"
+      styleClass="fundo-cortica" stylesheets="@estilo.css">
+
+    <Label text="FICHA DE HABILIDADES" styleClass="titulo-carimbo"/>
+    <Label text="AGENTE — UPGRADES PERMANENTES"
+           style="-fx-font-family: 'Courier New'; -fx-font-size: 11px; -fx-text-fill: #8b6914;"/>
+    <Label fx:id="labelPontos" styleClass="label-destaque"/>
+    <Label text="──────────────────────────────────────────────────" styleClass="separador"/>
+
+    <GridPane hgap="12" vgap="12" alignment="CENTER">
+
+        <VBox spacing="5" styleClass="papel-escuro" prefWidth="165"
+              GridPane.columnIndex="0" GridPane.rowIndex="0">
+            <Label text="FARO APURADO"
+                   style="-fx-font-family: 'Courier New'; -fx-font-weight: bold; -fx-text-fill: #5a0000; -fx-font-size: 12px;"/>
+            <Label text="Revela se uma pista é verdadeira ou falsa."
+                   style="-fx-font-family: 'Courier New'; -fx-font-size: 11px; -fx-text-fill: #2a1a05;"
+                   wrapText="true" maxWidth="145"/>
+            <Button text="COMPRAR  [3 pts]" onAction="#comprarFaroApurado"
+                    prefWidth="145" styleClass="botao-etiqueta"/>
+        </VBox>
+
+        <VBox spacing="5" styleClass="papel-escuro" prefWidth="165"
+              GridPane.columnIndex="1" GridPane.rowIndex="0">
+            <Label text="INTIMIDAÇÃO"
+                   style="-fx-font-family: 'Courier New'; -fx-font-weight: bold; -fx-text-fill: #5a0000; -fx-font-size: 12px;"/>
+            <Label text="Força suspeito a revelar detalhes extras."
+                   style="-fx-font-family: 'Courier New'; -fx-font-size: 11px; -fx-text-fill: #2a1a05;"
+                   wrapText="true" maxWidth="145"/>
+            <Button text="COMPRAR  [3 pts]" onAction="#comprarIntimidacao"
+                    prefWidth="145" styleClass="botao-etiqueta"/>
+        </VBox>
+
+        <VBox spacing="5" styleClass="papel-escuro" prefWidth="165"
+              GridPane.columnIndex="2" GridPane.rowIndex="0">
+            <Label text="REDE DE CONTATOS"
+                   style="-fx-font-family: 'Courier New'; -fx-font-weight: bold; -fx-text-fill: #5a0000; -fx-font-size: 12px;"/>
+            <Label text="Inicia cada caso com 1 pista revelada."
+                   style="-fx-font-family: 'Courier New'; -fx-font-size: 11px; -fx-text-fill: #2a1a05;"
+                   wrapText="true" maxWidth="145"/>
+            <Button text="COMPRAR  [4 pts]" onAction="#comprarRedeContatos"
+                    prefWidth="145" styleClass="botao-etiqueta"/>
+        </VBox>
+
+        <VBox spacing="5" styleClass="papel-escuro" prefWidth="165"
+              GridPane.columnIndex="0" GridPane.rowIndex="1">
+            <Label text="MEM. FOTOGRÁFICA"
+                   style="-fx-font-family: 'Courier New'; -fx-font-weight: bold; -fx-text-fill: #5a0000; -fx-font-size: 12px;"/>
+            <Label text="Destaca pistas que se confirmam entre si."
+                   style="-fx-font-family: 'Courier New'; -fx-font-size: 11px; -fx-text-fill: #2a1a05;"
+                   wrapText="true" maxWidth="145"/>
+            <Button text="COMPRAR  [5 pts]" onAction="#comprarMemoriaFotografica"
+                    prefWidth="145" styleClass="botao-etiqueta"/>
+        </VBox>
+
+        <VBox spacing="5" styleClass="papel-escuro" prefWidth="165"
+              GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Label text="OLHO CLÍNICO"
+                   style="-fx-font-family: 'Courier New'; -fx-font-weight: bold; -fx-text-fill: #5a0000; -fx-font-size: 12px;"/>
+            <Label text="Identifica álibis parciais ou falsos."
+                   style="-fx-font-family: 'Courier New'; -fx-font-size: 11px; -fx-text-fill: #2a1a05;"
+                   wrapText="true" maxWidth="145"/>
+            <Button text="COMPRAR  [5 pts]" onAction="#comprarOlhoClinico"
+                    prefWidth="145" styleClass="botao-etiqueta"/>
+        </VBox>
+
+    </GridPane>
+
+    <Label fx:id="labelStatus"
+           style="-fx-font-family: 'Courier New'; -fx-font-size: 12px; -fx-text-fill: #8b0000;"/>
+
+    <HBox spacing="10" alignment="CENTER">
+        <Button text="◀  VOLTAR AO GAMEPLAY" onAction="#voltarGameplay"
+                prefWidth="220" styleClass="botao-carimbo"/>
+        <Button text="MENU" onAction="#voltarMenu"
+                prefWidth="100" styleClass="botao-etiqueta"/>
+    </HBox>
+
+</VBox>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.crimevariavel.controller.RankingController"
+      alignment="CENTER" spacing="18" prefWidth="800" prefHeight="600"
+      styleClass="fundo-cortica" stylesheets="@estilo.css">
+
+    <Label text="QUADRO DE HONRA" styleClass="titulo-carimbo"/>
+    <Label text="DETETIVES — CASOS SOLUCIONADOS COM SUCESSO"
+           style="-fx-font-family: 'Courier New'; -fx-font-size: 11px; -fx-text-fill: #8b6914;"/>
+    <Label text="──────────────────────────────────────────────────" styleClass="separador"/>
+
+    <TextArea fx:id="areaRanking" editable="false"
+              prefWidth="580" prefHeight="350"
+              style="-fx-font-family: 'Courier New'; -fx-font-size: 13px;"/>
+    
+    <Button text="EXPORTAR CSV" onAction="#exportarCSV" prefWidth="220" styleClass="botao-carimbo"/>
+    <Label fx:id="labelStatus" styleClass="label-destaque"/>
+
+    <Button text="◀  VOLTAR AO MENU" onAction="#voltarMenu" prefWidth="220" styleClass="botao-etiqueta"/>
+
+</VBox>

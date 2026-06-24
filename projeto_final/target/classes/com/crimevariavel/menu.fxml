@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Separator?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.crimevariavel.controller.MenuController"
+      alignment="CENTER" spacing="0"
+      prefWidth="800" prefHeight="600"
+      styleClass="fundo-cortica"
+      stylesheets="@estilo.css">
+
+    <!-- Cabeçalho do "arquivo" -->
+    <VBox alignment="CENTER" spacing="4" style="-fx-padding: 0 0 25 0;">
+        <Label text="DEPARTAMENTO DE INVESTIGAÇÃO CRIMINAL"
+               style="-fx-font-family: 'Courier New'; -fx-font-size: 11px; -fx-text-fill: #8b6914; -fx-letter-spacing: 3px;"/>
+        <Label text="CRIME VARIÁVEL" styleClass="titulo-carimbo"/>
+        <Label text="─────────────────────────────────────────"
+               styleClass="separador"/>
+        <Label text="CASO Nº ????  |  STATUS: ABERTO  |  CLASSIFICADO"
+               style="-fx-font-family: 'Courier New'; -fx-font-size: 11px; -fx-text-fill: #8b0000;"/>
+    </VBox>
+
+    <!-- Pasta / formulário de entrada -->
+    <VBox spacing="14" alignment="CENTER" styleClass="papel"
+          maxWidth="380">
+        <Label text="IDENTIFICAÇÃO DO AGENTE" styleClass="label-campo"/>
+        <Label text="────────────────────────────────" styleClass="separador"/>
+
+        <VBox spacing="4">
+            <Label text="NOME DO DETETIVE:" styleClass="label-campo"/>
+            <TextField fx:id="campoNome"
+                       promptText="Digite seu nome..."
+                       prefWidth="320"/>
+        </VBox>
+
+        <Label text="" prefHeight="6"/>
+
+        <Button text="▶  INICIAR INVESTIGAÇÃO"
+                onAction="#jogar"
+                prefWidth="320" prefHeight="40"
+                styleClass="botao-carimbo"/>
+
+        <Label text="────────────────────────────────" styleClass="separador"/>
+
+        <HBox spacing="10" alignment="CENTER">
+            <Button text="📋  RANKING"  onAction="#abrirRanking"  prefWidth="148" styleClass="botao-etiqueta"/>
+            <Button text="📄  CRÉDITOS" onAction="#abrirCreditos" prefWidth="148" styleClass="botao-etiqueta"/>
+        </HBox>
+
+        <Button text="encerrar programa" onAction="#encerrar"
+                prefWidth="320" styleClass="botao-perigo"/>
+    </VBox>
+
+    <Label fx:id="labelErro" styleClass="label-erro" style="-fx-padding: 8 0 0 0;"/>
+
+    <!-- Rodapé do documento -->
+    <Label text="CONFIDENCIAL — USO RESTRITO — IFMS/TLP2"
+           style="-fx-font-family: 'Courier New'; -fx-font-size: 10px; -fx-text-fill: #5a4020; -fx-padding: 20 0 0 0;"/>
+
+</VBox>

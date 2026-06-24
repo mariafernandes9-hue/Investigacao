@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.crimevariavel.controller.LojaController"
+      alignment="CENTER" spacing="18" prefWidth="800" prefHeight="600"
+      styleClass="fundo-cortica" stylesheets="@estilo.css">
+
+    <Label text="DEPÓSITO DE RECURSOS" styleClass="titulo-carimbo"/>
+    <Label text="ITENS CONSUMÍVEIS — VÁLIDOS POR RUN" style="-fx-font-family: 'Courier New'; -fx-font-size: 11px; -fx-text-fill: #8b6914;"/>
+    <Label fx:id="labelMoedas" styleClass="label-destaque"/>
+    <Label text="──────────────────────────────────────────────────" styleClass="separador"/>
+
+    <HBox spacing="15" alignment="CENTER">
+
+        <VBox spacing="8" styleClass="papel" prefWidth="200" alignment="CENTER">
+            <Label text="MANDADO DE BUSCA" style="-fx-font-family: 'Courier New'; -fx-font-weight: bold; -fx-text-fill: #5a0000; -fx-font-size: 12px;"/>
+            <Label text="────────────" styleClass="separador"/>
+            <Label text="Acessa um local que estava bloqueado durante a investigação."
+                   style="-fx-font-family: 'Courier New'; -fx-font-size: 11px; -fx-text-fill: #2a1a05;" wrapText="true" maxWidth="170"/>
+            <Label text="[ 50 moedas ]" style="-fx-font-family: 'Courier New'; -fx-text-fill: #8b0000; -fx-font-weight: bold;"/>
+            <Button text="ADQUIRIR" onAction="#comprarMandado" prefWidth="160" styleClass="botao-carimbo"/>
+        </VBox>
+
+        <VBox spacing="8" styleClass="papel" prefWidth="200" alignment="CENTER">
+            <Label text="INFORMANTE" style="-fx-font-family: 'Courier New'; -fx-font-weight: bold; -fx-text-fill: #5a0000; -fx-font-size: 12px;"/>
+            <Label text="────────────" styleClass="separador"/>
+            <Label text="Elimina automaticamente 1 suspeito inocente da lista ativa."
+                   style="-fx-font-family: 'Courier New'; -fx-font-size: 11px; -fx-text-fill: #2a1a05;" wrapText="true" maxWidth="170"/>
+            <Label text="[ 80 moedas ]" style="-fx-font-family: 'Courier New'; -fx-text-fill: #8b0000; -fx-font-weight: bold;"/>
+            <Button text="ADQUIRIR" onAction="#comprarInformante" prefWidth="160" styleClass="botao-carimbo"/>
+        </VBox>
+
+        <VBox spacing="8" styleClass="papel" prefWidth="200" alignment="CENTER">
+            <Label text="ANÁLISE FORENSE" style="-fx-font-family: 'Courier New'; -fx-font-weight: bold; -fx-text-fill: #5a0000; -fx-font-size: 12px;"/>
+            <Label text="────────────" styleClass="separador"/>
+            <Label text="Confirma se o objeto encontrado é a arma utilizada no crime."
+                   style="-fx-font-family: 'Courier New'; -fx-font-size: 11px; -fx-text-fill: #2a1a05;" wrapText="true" maxWidth="170"/>
+            <Label text="[ 100 moedas ]" style="-fx-font-family: 'Courier New'; -fx-text-fill: #8b0000; -fx-font-weight: bold;"/>
+            <Button text="ADQUIRIR" onAction="#comprarForense" prefWidth="160" styleClass="botao-carimbo"/>
+        </VBox>
+
+    </HBox>
+
+    <Label fx:id="labelStatus" style="-fx-font-family: 'Courier New'; -fx-font-size: 12px; -fx-text-fill: #8b0000;"/>
+    <HBox spacing="10" alignment="CENTER">
+        <Button text="◀  VOLTAR AO GAMEPLAY" onAction="#voltarGameplay" prefWidth="220" styleClass="botao-carimbo"/>
+        <Button text="MENU" onAction="#voltarMenu" prefWidth="100" styleClass="botao-etiqueta"/>
+    </HBox>
+
+</VBox>

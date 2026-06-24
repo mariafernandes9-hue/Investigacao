@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.crimevariavel.controller.GameplayController"
+            prefWidth="900" prefHeight="620"
+            stylesheets="@estilo.css">
+
+    <!-- Topo: barra do arquivo -->
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="25" styleClass="barra-topo">
+            <Label text="DOSSIÊ ATIVO" style="-fx-font-family: 'Courier New'; -fx-font-weight: bold; -fx-text-fill: #8b6914; -fx-font-size: 13px;"/>
+            <Label fx:id="labelJogador" style="-fx-font-family: 'Courier New'; -fx-text-fill: #f0dfa8; -fx-font-size: 12px;"/>
+            <Label text="|" style="-fx-text-fill: #5a4020;"/>
+            <Label fx:id="labelMoedas"  style="-fx-font-family: 'Courier New'; -fx-text-fill: #c8a030; -fx-font-size: 12px;"/>
+            <Label text="|" style="-fx-text-fill: #5a4020;"/>
+            <Label fx:id="labelCasos"   style="-fx-font-family: 'Courier New'; -fx-text-fill: #8b6914; -fx-font-size: 12px;"/>
+            <Label text="|" style="-fx-text-fill: #5a4020;"/>
+            <Button text="⚠ BOSS" onAction="#abrirBoss"
+                    style="-fx-background-color: #8b0000; -fx-text-fill: #f0dfa8;
+                           -fx-font-family: 'Courier New'; -fx-font-weight: bold;
+                           -fx-font-size: 11px; -fx-cursor: hand; -fx-padding: 3 10;"/>
+        </HBox>
+    </top>
+
+    <!-- Centro: três colunas -->
+    <center>
+        <HBox spacing="10" style="-fx-padding: 12; -fx-background-color: #2b2118;">
+
+            <!-- Coluna esquerda: locais -->
+            <VBox fx:id="painelLocais" spacing="8" prefWidth="185" styleClass="painel-lateral"/>
+
+            <!-- Centro: área de pistas / laudo -->
+            <VBox spacing="8" prefWidth="430">
+                <Label text="RELATÓRIO DE CAMPO" style="-fx-font-family: 'Courier New'; -fx-font-size: 11px; -fx-text-fill: #8b6914; -fx-font-weight: bold;"/>
+                <TextArea fx:id="areaPistas" prefHeight="350" editable="false"
+                          promptText="__ Registros de investigação aparecerão aqui. __&#10;&#10;Clique em um LOCAL para coletar pistas.&#10;Clique em um SUSPEITO para interrogar."/>
+                <Label fx:id="labelStatus"
+                       style="-fx-font-family: 'Courier New'; -fx-font-size: 11px; -fx-text-fill: #8b6914;"
+                       wrapText="true"/>
+            </VBox>
+
+            <!-- Coluna direita: suspeitos -->
+            <VBox fx:id="painelSuspeitos" spacing="8" prefWidth="185" styleClass="painel-lateral"/>
+
+        </HBox>
+    </center>
+
+    <!-- Rodapé: ações -->
+    <bottom>
+        <HBox spacing="8" alignment="CENTER" styleClass="barra-rodape">
+            <Button text="INVENTÁRIO"  onAction="#abrirInventario" styleClass="botao-etiqueta"/>
+            <Button text="UPGRADES"    onAction="#abrirUpgrades"   styleClass="botao-etiqueta"/>
+            <Button text="LOJA"        onAction="#abrirLoja"       styleClass="botao-etiqueta"/>
+            <Label text="  |  " style="-fx-text-fill: #5a4020;"/>
+            <Button text="⚖  FAZER ACUSAÇÃO" onAction="#acusar"   styleClass="botao-carimbo"/>
+            <Label text="  |  " style="-fx-text-fill: #5a4020;"/>
+            <Button text="MENU"        onAction="#voltarMenu"      styleClass="botao-perigo"/>
+        </HBox>
+    </bottom>
+
+</BorderPane>
