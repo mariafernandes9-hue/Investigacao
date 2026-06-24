@@ -32,7 +32,7 @@ public class RankingController {
 
         for (int i = 0; i < lista.size(); i++) {
             Jogador j = lista.get(i);
-            // casos_resolvidos só é incrementado em vitórias (AcusacaoController)
+            //casos_resolvidos só é incrementado em vitórias (AcusacaoController)
             sb.append(String.format("%-4s %-22s %-10s %-10s%n",
                     (i + 1) + "º",
                     j.getNome(),

@@ -1,6 +1,9 @@
 package com.crimevariavel.model;
+
 import java.util.List;
+
 public class Caso {
+    
     private List<Suspeito> suspeitos;
     private List<Pista> pistas;
     private Suspeito culpado;
@@ -14,10 +17,22 @@ public class Caso {
         this.motivacaoVerdadeira = motivacao; this.linhaDoTempo = linhaDoTempo;
         this.dificuldade = dificuldade;
     }
-    public List<Suspeito> getSuspeitos() { return suspeitos; }
-    public List<Pista> getPistas() { return pistas; }
-    public Suspeito getCulpado() { return culpado; }
-    public String getMotivacaoVerdadeira() { return motivacaoVerdadeira; }
-    public String getLinhaDoTempo() { return linhaDoTempo; }
-    public String getDificuldade() { return dificuldade; }
+    
+    public List<Suspeito> getSuspeitos(){
+        return suspeitos; }
+    
+    public List<Pista> getPistas(){
+        return pistas; }
+    
+    public Suspeito getCulpado(){ 
+        return culpado; }
+    
+    public String getMotivacaoVerdadeira(){ 
+        return motivacaoVerdadeira; }
+    
+    public String getLinhaDoTempo(){ 
+        return linhaDoTempo; }
+    
+    public String getDificuldade(){ 
+        return dificuldade; }
 }

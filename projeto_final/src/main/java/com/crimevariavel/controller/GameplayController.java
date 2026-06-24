@@ -35,7 +35,7 @@ public class GameplayController {
     private Jogador jogador;
     private JogadorDAO jogadorDAO;
 
-    // Upgrades ativos do jogador
+    //guarda upgrades ativos do jogador
     private List<String> upgradesAtivos;
 
     @FXML
@@ -43,7 +43,7 @@ public class GameplayController {
         jogador = SessaoJogador.getJogador();
         jogadorDAO = new JogadorDAO();
 
-        // Carrega upgrades permanentes do banco
+        //carrega upgrades permanentes do banco
         upgradesAtivos = new UpgradeDAO().listarPorJogador(jogador.getId());
 
         labelJogador.setText("Detetive: " + jogador.getNome());
@@ -87,7 +87,7 @@ public class GameplayController {
         labelStatus.setText("Caso gerado! Dificuldade: " + dificuldade.toUpperCase());
         configurarBotoes();
 
-        // ── UPGRADE: Rede de Contatos — revela 1 pista automaticamente ──
+        //UPGRADE 1: Rede de Contatos — revela 1 pista automaticamente
         if (upgradesAtivos.contains("Rede de Contatos")) {
             casoAtual.getPistas().stream().findFirst().ifPresent(p -> {
                 areaPistas.appendText("[ REDE DE CONTATOS — pista inicial revelada ]\n");
@@ -133,7 +133,7 @@ public class GameplayController {
         areaPistas.appendText("\n[ INTERROGATÓRIO — " + s.getNome().toUpperCase() + " ]\n");
         areaPistas.appendText("Personalidade: " + s.getPersonalidade() + "\n");
 
-        // ── UPGRADE: Olho Clínico — identifica tipo do álibi ──
+        //UPGRADE2: Olho Clínico — identifica tipo do álibi
         String alibi = s.getAlibi();
         if (upgradesAtivos.contains("Olho Clínico")) {
             String tipoAlibi;
@@ -149,7 +149,7 @@ public class GameplayController {
             areaPistas.appendText("Álibi: " + alibi + "\n");
         }
 
-        // ── UPGRADE: Intimidação — revela detalhe extra ──
+        //UPGRADE3: Intimidação — revela detalhe extra
         if (upgradesAtivos.contains("Intimidação")) {
             if (s.isCulpado()) {
                 areaPistas.appendText("★ [INTIMIDAÇÃO] " + s.getNome()
@@ -175,7 +175,7 @@ public class GameplayController {
             areaPistas.appendText("Nenhuma pista encontrada aqui.\n");
         } else {
             for (Pista p : pistasdoLocal) {
-                // ── UPGRADE: Faro Apurado — marca tipo da pista ──
+                //UPGRADE4: Faro Apurado — marca tipo da pista
                 if (upgradesAtivos.contains("Faro Apurado")) {
                     String marcador = switch (p.getTipo()) {
                         case VERDADEIRA -> "★ [VERDADEIRA]";
@@ -188,7 +188,7 @@ public class GameplayController {
                 }
             }
 
-            // ── UPGRADE: Memória Fotográfica — destaca pistas que se confirmam ──
+            //UPGRADE5: Memória Fotográfica — destaca pistas que se confirmam
             if (upgradesAtivos.contains("Memória Fotográfica")) {
                 long verdadeiras = pistasdoLocal.stream()
                         .filter(p -> p.getTipo() == Pista.Tipo.VERDADEIRA).count();
@@ -205,7 +205,7 @@ public class GameplayController {
         areaPistas.appendText("─────────────────────────────\n");
     }
 
-    // ── Efeitos dos itens consumíveis ─────────────────────────────────────
+    //aplicar os efeitos dos updates
 
     private void aplicarEfeitoItem(String item) {
         switch (item) {
@@ -263,7 +263,7 @@ public class GameplayController {
                 });
     }
 
-    // ── Abrir inventário como Stage separado ──────────────────────────────
+    //abrir inventário como Stage separado
 
     @FXML
     public void abrirInventario() {

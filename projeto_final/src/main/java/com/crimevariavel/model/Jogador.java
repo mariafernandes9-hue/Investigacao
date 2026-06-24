@@ -1,16 +1,22 @@
 package com.crimevariavel.model;
+
 public class Jogador {
+    
     private int id;
     private String nome;
     private int moedas;
     private int pontosUpgrade;
     private int casosResolvidos;
 
-    public Jogador() {}
+    public Jogador() {
+    }
+
     public Jogador(int id, String nome, int moedas, int pontosUpgrade, int casosResolvidos) {
         this.id = id; this.nome = nome; this.moedas = moedas;
         this.pontosUpgrade = pontosUpgrade; this.casosResolvidos = casosResolvidos;
     }
+    
+    // arrumar em todos os model ( get e set )
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
     public String getNome() { return nome; }

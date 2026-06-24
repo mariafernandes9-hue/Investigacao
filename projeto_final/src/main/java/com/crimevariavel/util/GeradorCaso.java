@@ -10,7 +10,9 @@ import java.util.*;
  * Geração procedural de casos.
  * A dificuldade afeta: quantidade de pistas, qualidade dos álibis,
  * clareza da linha do tempo e quão convincentes são as pistas falsas.
+ * gerado por ia
  */
+
 public class GeradorCaso {
 
     private static final Random random = new Random();

@@ -11,7 +11,7 @@ public class BossController {
 
     @FXML private Label labelDescricao;
     @FXML private Label labelStatus;
-    @FXML private Button btnIniciar;
+    @FXML private Button botaoIniciar;
 
     @FXML
     public void initialize() {
@@ -22,12 +22,12 @@ public class BossController {
         if (casos >= necessario) {
             labelDescricao.setText("O Grande Crime foi descoberto. Um assassinato no coração do hotel.\n" +
                 "Cinco suspeitos. Dezenas de pistas — a maioria falsa.\nVocê está pronto?");
-            btnIniciar.setDisable(false);
+            botaoIniciar.setDisable(false);
             labelStatus.setText("Desbloqueado! Casos resolvidos: " + casos);
         } else {
             labelDescricao.setText("Você ainda não está pronto para O Grande Crime.\n" +
                 "Resolva mais " + (necessario - casos) + " caso(s) para desbloquear.");
-            btnIniciar.setDisable(true);
+            botaoIniciar.setDisable(true);
             labelStatus.setText("Necessário: " + necessario + " casos | Seus casos: " + casos);
         }
     }

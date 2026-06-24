@@ -32,12 +32,12 @@ public class LojaController {
             return;
         }
  
-        // Desconta moedas e salva no banco
+        //Desconta moedas e salva no banco
         jogador.setMoedas(jogador.getMoedas() - preco);
         dao.atualizar(jogador);
         SessaoJogador.setJogador(jogador);
  
-        // Adiciona ao inventário da sessão
+        //Adiciona ao inventário da sessão
         SessaoJogador.adicionarItem(nomeItem);
  
         atualizarMoedas();

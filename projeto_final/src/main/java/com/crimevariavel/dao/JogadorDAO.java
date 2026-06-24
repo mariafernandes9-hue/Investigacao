@@ -1,4 +1,5 @@
 package com.crimevariavel.dao;
+
 import com.crimevariavel.model.Jogador;
 import com.crimevariavel.util.ConnectionFactory;
 import java.sql.*;

@@ -16,22 +16,22 @@ public class AcusacaoController {
  
     @FXML private VBox painelSuspeitos;
     @FXML private Label labelResultado;
-    @FXML private Button btnProximo;
-    @FXML private Button btnMenu;
+    @FXML private Button botaoProximo;
+    @FXML private Button botaoMenu;
  
     private Caso caso;
  
     @FXML
     public void initialize() {
         caso = SessaoJogador.getCasoAtual();
-        btnProximo.setVisible(false);
-        btnMenu.setVisible(false);
+        botaoProximo.setVisible(false);
+        botaoMenu.setVisible(false);
  
         for (Suspeito s : caso.getSuspeitos()) {
-            Button btn = new Button(s.getNome());
-            btn.setPrefWidth(280);
-            btn.setOnAction(e -> acusar(s));
-            painelSuspeitos.getChildren().add(btn);
+            Button botao = new Button(s.getNome());
+            botao.setPrefWidth(280);
+            botao.setOnAction(e -> acusar(s));
+            painelSuspeitos.getChildren().add(botao);
         }
     }
  
@@ -74,8 +74,8 @@ public class AcusacaoController {
         SessaoJogador.setCasoAtual(null);
  
         painelSuspeitos.setDisable(true);
-        btnProximo.setVisible(true);
-        btnMenu.setVisible(true);
+        botaoProximo.setVisible(true);
+        botaoMenu.setVisible(true);
     }
  
     @FXML public void proximoCaso() { SceneManager.navegar("gameplay"); }

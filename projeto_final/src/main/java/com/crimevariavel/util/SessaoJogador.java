@@ -5,7 +5,10 @@ import com.crimevariavel.model.Jogador;
 import java.util.HashMap;
 import java.util.Map;
  
+//gerado por ia 
+
 public class SessaoJogador {
+    
     private static Jogador jogador;
     private static Caso casoAtual;
     private static int moedasRun;
@@ -39,12 +42,18 @@ public class SessaoJogador {
         return true;
     }
  
-    public static Map<String, Integer> getInventario() { return inventario; }
+    public static Map<String, Integer> getInventario(){
+        return inventario; }
  
     public static void limparInventario() { inventario.clear(); }
  
-    public static void setItemUsado(String item)    { itemUsadoRecentemente = item; }
-    public static String getItemUsado()             { return itemUsadoRecentemente; }
-    public static void limparItemUsado()            { itemUsadoRecentemente = null; }
+    public static void setItemUsado(String item){
+        itemUsadoRecentemente = item; }
+    
+    public static String getItemUsado(){ 
+        return itemUsadoRecentemente; }
+    
+    public static void limparItemUsado(){ 
+        itemUsadoRecentemente = null; }
 }
  

@@ -27,7 +27,7 @@ public class InventarioController {
  
         areaItens.getChildren().clear();
  
-        // ── Seção de itens consumíveis ──
+        //itens consumíveis 
         Label tituloItens = new Label("ITENS DISPONÍVEIS");
         tituloItens.setStyle("-fx-font-family: 'Courier New'; -fx-font-weight: bold; "
                 + "-fx-text-fill: #5a0000; -fx-font-size: 13px;");
@@ -65,7 +65,7 @@ public class InventarioController {
             }
         }
  
-        // ── Seção de upgrades permanentes ──
+        //upgrades permanentes
         Label separador = new Label("─────────────────────────────────────");
         separador.setStyle("-fx-text-fill: #8b6914;");
         areaItens.getChildren().add(separador);
@@ -103,10 +103,10 @@ public class InventarioController {
     private void usarItem(String item) {
         if (!SessaoJogador.removerItem(item)) return;
  
-        // Sinaliza para o GameplayController qual item foi usado
+        //Sinaliza para o GameplayController qual item foi usado
         SessaoJogador.setItemUsado(item);
  
-        // Fecha o inventário — o GameplayController detecta e aplica o efeito
+        //Fecha o inventário - o GameplayController detecta e aplica o efeito
         fechar();
     }
  
