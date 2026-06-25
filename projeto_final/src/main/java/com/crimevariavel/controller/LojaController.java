@@ -5,15 +5,13 @@ import com.crimevariavel.model.Jogador;
 import com.crimevariavel.util.SceneManager;
 import com.crimevariavel.util.SessaoJogador;
 import javafx.fxml.FXML;
+import javafx.stage.Stage;
 import javafx.scene.control.Label;
  
 public class LojaController {
  
-    @FXML 
-    private Label labelMoedas;
-    
-    @FXML 
-    private Label labelStatus;
+    @FXML private Label labelMoedas;
+    @FXML private Label labelStatus;
  
     private Jogador jogador;
     private JogadorDAO dao;
@@ -35,12 +33,12 @@ public class LojaController {
             return;
         }
  
-        //Desconta moedas e salva no banco
+        // Desconta moedas e salva no banco
         jogador.setMoedas(jogador.getMoedas() - preco);
         dao.atualizar(jogador);
         SessaoJogador.setJogador(jogador);
  
-        //Adiciona ao inventário da sessão
+        // Adiciona ao inventário da sessão
         SessaoJogador.adicionarItem(nomeItem);
  
         atualizarMoedas();
@@ -50,6 +48,7 @@ public class LojaController {
     @FXML public void comprarMandado()    { comprar("Mandado de Busca", 50); }
     @FXML public void comprarInformante() { comprar("Informante", 80); }
     @FXML public void comprarForense()    { comprar("Análise Forense", 100); }
-    @FXML public void voltarGameplay()    { SceneManager.navegar("gameplay"); }
+    
+    @FXML public void fecharJanela() { ((Stage) labelStatus.getScene().getWindow()).close(); }
     @FXML public void voltarMenu()        { SceneManager.navegar("menu"); }
 }

@@ -67,13 +67,13 @@ public class GameplayController {
  
     // Mapeamento local → nome do arquivo de imagem
     private static final Map<String, String> IMAGENS_LOCAIS = Map.of(
-        "Recepção",   "recepcao.jpg",
-        "Restaurante","restaurante.jpg",
-        "Quarto 201", "quarto201.jpg",
-        "Jardim",     "jardim.jpg",
-        "Garagem",    "garagem.jpg"
+        "Recepção",   "recepao.png",
+        "Restaurante","restaurante.png",
+        "Quarto 201", "quarto201.png",
+        "Jardim",     "jardim.png",
+        "Garagem",    "garagem.png"
     );
-    private static final String IMG_MAPA = "mapa_hotel.jpg";
+    private static final String IMG_MAPA = "mapa_hotel.jng";
  
     // ── Inicialização ─────────────────────────────────────────────────
     @FXML
@@ -469,7 +469,28 @@ public class GameplayController {
     // ── Navegação ─────────────────────────────────────────────────────
     @FXML public void abrirBoss()     { SceneManager.navegar("boss"); }
     @FXML public void acusar()        { SceneManager.navegar("acusacao"); }
-    @FXML public void abrirUpgrades() { SceneManager.navegar("upgrades"); }
-    @FXML public void abrirLoja()     { SceneManager.navegar("loja"); }
+    @FXML public void abrirUpgrades() {
+        try {
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/com/crimevariavel/upgrades.fxml"));
+            Stage stage = new Stage();
+            stage.setTitle("Upgrades");
+            stage.setScene(new Scene(loader.load()));
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.show();
+        } catch (Exception e) { e.printStackTrace(); }
+    }
+ 
+    @FXML public void abrirLoja() {
+        try {
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/com/crimevariavel/loja.fxml"));
+            Stage stage = new Stage();
+            stage.setTitle("Loja");
+            stage.setScene(new Scene(loader.load()));
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.show();
+        } catch (Exception e) { e.printStackTrace(); }
+    }
     @FXML public void voltarMenu()    { SceneManager.navegar("menu"); }
 }

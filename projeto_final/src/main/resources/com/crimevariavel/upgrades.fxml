@@ -79,7 +79,7 @@
            style="-fx-font-family: 'Courier New'; -fx-font-size: 12px; -fx-text-fill: #8b0000;"/>
 
     <HBox spacing="10" alignment="CENTER">
-        <Button text="◀  VOLTAR AO GAMEPLAY" onAction="#voltarGameplay"
+        <Button text="◀  FECHAR" onAction="#fecharJanela"
                 prefWidth="220" styleClass="botao-carimbo"/>
         <Button text="MENU" onAction="#voltarMenu"
                 prefWidth="100" styleClass="botao-etiqueta"/>
