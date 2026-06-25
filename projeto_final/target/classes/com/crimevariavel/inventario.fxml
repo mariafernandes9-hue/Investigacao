@@ -7,7 +7,7 @@
 <VBox xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.crimevariavel.controller.InventarioController"
       spacing="15" prefWidth="580" prefHeight="500"
-      styleClass="fundo-cortica" stylesheets="@estilo.css">
+      styleClass="janela-modal" stylesheets="@estilo.css">
 
     <Label text="INVENTÁRIO DO AGENTE"
            style="-fx-font-family: 'Courier New'; -fx-font-size: 20px;
@@ -31,3 +31,4 @@
             style="-fx-margin: 0 0 10 215;"/>
 
 </VBox>
+

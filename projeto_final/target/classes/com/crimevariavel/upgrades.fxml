@@ -7,8 +7,8 @@
 
 <VBox xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.crimevariavel.controller.UpgradesController"
-      alignment="CENTER" spacing="18" prefWidth="800" prefHeight="600"
-      styleClass="fundo-cortica" stylesheets="@estilo.css">
+      alignment="CENTER" spacing="18"
+      styleClass="janela-modal" stylesheets="@estilo.css">
 
     <Label text="FICHA DE HABILIDADES" styleClass="titulo-carimbo"/>
     <Label text="AGENTE — UPGRADES PERMANENTES"

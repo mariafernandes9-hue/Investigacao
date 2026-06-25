@@ -11,8 +11,11 @@ import javafx.scene.control.TextField;
 
 public class MenuController {
 
-    @FXML private TextField campoNome;
-    @FXML private Label labelErro;
+    @FXML 
+    private TextField campoNome;
+    
+    @FXML 
+    private Label labelErro;
 
     @FXML
     public void jogar() {

@@ -5,8 +5,15 @@
     -fx-font-family: "Courier New", Courier, monospace;
 }
 
-/* Fundo tipo cortiça / mesa de detetive */
+/* Telas principais — ocupam a janela toda */
 .fundo-cortica {
+    -fx-background-color: #2b2118;
+    -fx-max-width: infinity;
+    -fx-max-height: infinity;
+}
+
+/* Janelas modais (inventário, loja, upgrades) — tamanho fixo */
+.janela-modal {
     -fx-background-color: #2b2118;
     -fx-padding: 30px;
 }
@@ -213,4 +220,72 @@
     -fx-padding: 10px;
     -fx-border-color: #8b6914;
     -fx-border-width: 2px 0 0 0;
+}
+
+/* ── NOVOS ESTILOS DA GAMEPLAY REIMAGINADA ─────────────────────────── */
+
+/* Botão de local no mapa */
+.botao-local {
+    -fx-background-color: rgba(20, 10, 0, 0.78);
+    -fx-text-fill: #f0dfa8;
+    -fx-font-family: "Courier New", Courier, monospace;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-border-color: #8b6914;
+    -fx-border-width: 1px;
+    -fx-border-radius: 3px;
+    -fx-background-radius: 3px;
+    -fx-cursor: hand;
+    -fx-padding: 14 28;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.7), 8, 0, 2, 2);
+    -fx-min-width: 190px;
+}
+
+.botao-local:hover {
+    -fx-background-color: rgba(139, 105, 20, 0.75);
+    -fx-border-color: #f0dfa8;
+    -fx-text-fill: #ffffff;
+    -fx-effect: dropshadow(gaussian, rgba(200,160,48,0.5), 12, 0, 0, 0);
+}
+
+/* Card de pista na cena do local */
+.card-pista {
+    -fx-background-color: #f0dfa8;
+    -fx-background-radius: 2px;
+    -fx-border-color: #c8a96e;
+    -fx-border-width: 1px;
+    -fx-border-radius: 2px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.65), 8, 0, 2, 3);
+    -fx-padding: 14 16;
+    -fx-min-width: 200px;
+    -fx-max-width: 240px;
+}
+
+/* Card de suspeito no mapa */
+.card-suspeito {
+    -fx-background-color: rgba(15, 8, 2, 0.82);
+    -fx-border-color: #6b4a1e;
+    -fx-border-width: 1px;
+    -fx-border-radius: 3px;
+    -fx-background-radius: 3px;
+    -fx-padding: 8 14;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.6), 6, 0, 1, 2);
+    -fx-min-width: 150px;
+}
+
+.card-suspeito:hover {
+    -fx-background-color: rgba(139, 0, 0, 0.55);
+    -fx-border-color: #f0dfa8;
+}
+
+/* Item da gaveta de pistas */
+.item-gaveta {
+    -fx-padding: 10 16;
+    -fx-border-color: transparent transparent #2a1a08 transparent;
+    -fx-border-width: 0 0 1px 0;
+}
+
+.item-gaveta:hover {
+    -fx-background-color: rgba(139, 105, 20, 0.12);
 }

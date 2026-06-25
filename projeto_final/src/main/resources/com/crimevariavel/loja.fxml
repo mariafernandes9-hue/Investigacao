@@ -6,8 +6,8 @@
 
 <VBox xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.crimevariavel.controller.LojaController"
-      alignment="CENTER" spacing="18" prefWidth="800" prefHeight="600"
-      styleClass="fundo-cortica" stylesheets="@estilo.css">
+      alignment="CENTER" prefHeight="600"
+      styleClass="janela-modal" stylesheets="@estilo.css">
 
     <Label text="DEPÓSITO DE RECURSOS" styleClass="titulo-carimbo"/>
     <Label text="ITENS CONSUMÍVEIS — VÁLIDOS POR RUN" style="-fx-font-family: 'Courier New'; -fx-font-size: 11px; -fx-text-fill: #8b6914;"/>

@@ -9,9 +9,14 @@ import javafx.scene.control.Label;
 
 public class BossController {
 
-    @FXML private Label labelDescricao;
-    @FXML private Label labelStatus;
-    @FXML private Button botaoIniciar;
+    @FXML 
+    private Label labelDescricao;
+    
+    @FXML 
+    private Label labelStatus;
+    
+    @FXML 
+    private Button botaoIniciar;
 
     @FXML
     public void initialize() {

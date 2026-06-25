@@ -18,21 +18,51 @@ public class Caso {
         this.dificuldade = dificuldade;
     }
     
-    public List<Suspeito> getSuspeitos(){
-        return suspeitos; }
-    
-    public List<Pista> getPistas(){
-        return pistas; }
-    
-    public Suspeito getCulpado(){ 
-        return culpado; }
-    
-    public String getMotivacaoVerdadeira(){ 
-        return motivacaoVerdadeira; }
-    
-    public String getLinhaDoTempo(){ 
-        return linhaDoTempo; }
-    
-    public String getDificuldade(){ 
-        return dificuldade; }
+    public List<Suspeito> getSuspeitos() {
+        return suspeitos;
+    }
+
+    public void setSuspeitos(List<Suspeito> suspeitos) {
+        this.suspeitos = suspeitos;
+    }
+
+    public List<Pista> getPistas() {
+        return pistas;
+    }
+
+    public void setPistas(List<Pista> pistas) {
+        this.pistas = pistas;
+    }
+
+    public Suspeito getCulpado() {
+        return culpado;
+    }
+
+    public void setCulpado(Suspeito culpado) {
+        this.culpado = culpado;
+    }
+
+    public String getMotivacaoVerdadeira() {
+        return motivacaoVerdadeira;
+    }
+
+    public void setMotivacaoVerdadeira(String motivacaoVerdadeira) {
+        this.motivacaoVerdadeira = motivacaoVerdadeira;
+    }
+
+    public String getLinhaDoTempo() {
+        return linhaDoTempo;
+    }
+
+    public void setLinhaDoTempo(String linhaDoTempo) {
+        this.linhaDoTempo = linhaDoTempo;
+    }
+
+    public String getDificuldade() {
+        return dificuldade;
+    }
+
+    public void setDificuldade(String dificuldade) {
+        this.dificuldade = dificuldade;
+    }
 }

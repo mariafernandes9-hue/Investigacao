@@ -1,66 +1,174 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.FlowPane?>
 
-<BorderPane xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.crimevariavel.controller.GameplayController"
-            prefWidth="900" prefHeight="620"
-            stylesheets="@estilo.css">
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.crimevariavel.controller.GameplayController" prefWidth="900" prefHeight="620" stylesheets="@estilo.css">
 
-    <!-- Topo: barra do arquivo -->
+    <!-- TOPO: barra de status -->
     <top>
-        <HBox alignment="CENTER_LEFT" spacing="25" styleClass="barra-topo">
-            <Label text="DOSSIÊ ATIVO" style="-fx-font-family: 'Courier New'; -fx-font-weight: bold; -fx-text-fill: #8b6914; -fx-font-size: 13px;"/>
-            <Label fx:id="labelJogador" style="-fx-font-family: 'Courier New'; -fx-text-fill: #f0dfa8; -fx-font-size: 12px;"/>
-            <Label text="|" style="-fx-text-fill: #5a4020;"/>
-            <Label fx:id="labelMoedas"  style="-fx-font-family: 'Courier New'; -fx-text-fill: #c8a030; -fx-font-size: 12px;"/>
-            <Label text="|" style="-fx-text-fill: #5a4020;"/>
-            <Label fx:id="labelCasos"   style="-fx-font-family: 'Courier New'; -fx-text-fill: #8b6914; -fx-font-size: 12px;"/>
-            <Label text="|" style="-fx-text-fill: #5a4020;"/>
+        <HBox alignment="CENTER_LEFT" spacing="20" styleClass="barra-topo">
+            
+            <Label text="◈ CRIME VARIÁVEL"
+                   style="-fx-font-family:'Courier New'; -fx-font-weight:bold;
+                          -fx-text-fill:#8b0000; -fx-font-size:15px;"/>
+            
+            <Label text="|" style="-fx-text-fill:#3a2a10;"/>
+            
+            <Label fx:id="labelJogador"
+                   style="-fx-font-family:'Courier New'; -fx-text-fill:#f0dfa8; -fx-font-size:12px;"/>
+            
+            <Label text="|" style="-fx-text-fill:#3a2a10;"/>
+            
+            <Label fx:id="labelMoedas"
+                   style="-fx-font-family:'Courier New'; -fx-text-fill:#c8a030; -fx-font-size:12px;"/>
+            
+            <Label text="|" style="-fx-text-fill:#3a2a10;"/>
+            
+            <Label fx:id="labelCasos"
+                   style="-fx-font-family:'Courier New'; -fx-text-fill:#8b6914; -fx-font-size:12px;"/>
+            
+            <Label text="|" style="-fx-text-fill:#3a2a10;"/>
+            
+            <Label fx:id="labelDificuldade"
+                   style="-fx-font-family:'Courier New'; -fx-font-size:12px; -fx-font-weight:bold;"/>
+            
+            <Label fx:id="labelStatus"
+                   style="-fx-font-family:'Courier New'; -fx-font-size:11px;
+                          -fx-text-fill:#8b6914; -fx-font-style:italic;"
+                   HBox.hgrow="ALWAYS"/>
+            
             <Button text="⚠ BOSS" onAction="#abrirBoss"
-                    style="-fx-background-color: #8b0000; -fx-text-fill: #f0dfa8;
-                           -fx-font-family: 'Courier New'; -fx-font-weight: bold;
-                           -fx-font-size: 11px; -fx-cursor: hand; -fx-padding: 3 10;"/>
+                    style="-fx-background-color:#8b0000; -fx-text-fill:#f0dfa8;
+                           -fx-font-family:'Courier New'; -fx-font-weight:bold;
+                           -fx-font-size:11px; -fx-cursor:hand; -fx-padding:3 12;
+                           -fx-background-radius:2;"/>
         </HBox>
     </top>
 
-    <!-- Centro: três colunas -->
+    <!-- CENTRO: mapa do hotel (tela principal) -->
     <center>
-        <HBox spacing="10" style="-fx-padding: 12; -fx-background-color: #2b2118;">
+        <!-- StackPane permite sobrepor botões de locais sobre a imagem -->
+        <StackPane fx:id="stackCentro">
 
-            <!-- Coluna esquerda: locais -->
-            <VBox fx:id="painelLocais" spacing="8" prefWidth="185" styleClass="painel-lateral"/>
+            <!-- Imagem de fundo do hotel / cena atual -->
+            <ImageView fx:id="imagemCena"
+                       fitWidth="900" fitHeight="520"
+                       preserveRatio="false"/>
 
-            <!-- Centro: área de pistas / laudo -->
-            <VBox spacing="8" prefWidth="430">
-                <Label text="RELATÓRIO DE CAMPO" style="-fx-font-family: 'Courier New'; -fx-font-size: 11px; -fx-text-fill: #8b6914; -fx-font-weight: bold;"/>
-                <TextArea fx:id="areaPistas" prefHeight="350" editable="false"
-                          promptText="__ Registros de investigação aparecerão aqui. __&#10;&#10;Clique em um LOCAL para coletar pistas.&#10;Clique em um SUSPEITO para interrogar."/>
-                <Label fx:id="labelStatus"
-                       style="-fx-font-family: 'Courier New'; -fx-font-size: 11px; -fx-text-fill: #8b6914;"
-                       wrapText="true"/>
+            <!-- Overlay escuro para legibilidade -->
+            <VBox fx:id="overlayEscuro"
+                  style="-fx-background-color:rgba(0,0,0,0.45);"
+                  prefWidth="900" prefHeight="520"/>
+
+            <!-- Painel do MAPA (locais como portas) — visível na tela inicial -->
+            <VBox fx:id="painelMapa" alignment="CENTER" spacing="30"
+                  style="-fx-padding:0 0 30 0;">
+
+                <Label text="— SELECIONE UM LOCAL PARA INVESTIGAR —"
+                       style="-fx-font-family:'Courier New'; -fx-font-size:13px;
+                              -fx-text-fill:#c8a030; -fx-letter-spacing:3px;"/>
+
+                <!-- Linha 1: 3 locais -->
+                <HBox spacing="24" alignment="CENTER">
+                    <Button fx:id="btnRecepcao"    text="🚪  RECEPÇÃO"     onAction="#entrarLocal" styleClass="botao-local" userData="Recepção"/>
+                    <Button fx:id="btnRestaurante" text="🍽  RESTAURANTE"  onAction="#entrarLocal" styleClass="botao-local" userData="Restaurante"/>
+                    <Button fx:id="btnQuarto"      text="🛏  QUARTO 201"   onAction="#entrarLocal" styleClass="botao-local" userData="Quarto 201"/>
+                </HBox>
+
+                <!-- Linha 2: 2 locais -->
+                <HBox spacing="24" alignment="CENTER">
+                    <Button fx:id="btnJardim"   text="🌿  JARDIM"    onAction="#entrarLocal" styleClass="botao-local" userData="Jardim"/>
+                    <Button fx:id="btnGaragem"  text="🚗  GARAGEM"   onAction="#entrarLocal" styleClass="botao-local" userData="Garagem"/>
+                </HBox>
+
+                <!-- Linha 3: suspeitos -->
+                <Label text="— SUSPEITOS —"
+                       style="-fx-font-family:'Courier New'; -fx-font-size:13px;
+                              -fx-text-fill:#c8a030; -fx-letter-spacing:3px;"/>
+                <HBox fx:id="painelSuspeitos" spacing="14" alignment="CENTER"/>
             </VBox>
 
-            <!-- Coluna direita: suspeitos -->
-            <VBox fx:id="painelSuspeitos" spacing="8" prefWidth="185" styleClass="painel-lateral"/>
+            <!-- Painel da CENA DO LOCAL — oculto inicialmente -->
+            <VBox fx:id="painelCena" visible="false" alignment="TOP_LEFT"
+                  style="-fx-padding:20 24 0 24;" spacing="12">
 
-        </HBox>
+                <!-- Cabeçalho da cena -->
+                <HBox spacing="16" alignment="CENTER_LEFT">
+                    <Button text="← VOLTAR AO HOTEL" onAction="#voltarMapa"
+                            styleClass="botao-etiqueta"
+                            style="-fx-font-size:11px; -fx-padding:4 14;"/>
+                    <Label fx:id="labelLocalAtual"
+                           style="-fx-font-family:'Courier New'; -fx-font-size:20px;
+                                  -fx-font-weight:bold; -fx-text-fill:#f0dfa8;
+                                  -fx-effect:dropshadow(gaussian,rgba(0,0,0,0.9),6,0,1,1);"/>
+                </HBox>
+
+                <!-- Linha do tempo do caso -->
+                <Label fx:id="labelTempo"
+                       style="-fx-font-family:'Courier New'; -fx-font-size:11px;
+                              -fx-text-fill:#c8a030; -fx-font-style:italic;"
+                       wrapText="true"/>
+
+                <!-- Área de pistas do local: cards gerados dinamicamente -->
+                <FlowPane fx:id="areaCartoes" hgap="16" vgap="16" alignment="TOP_LEFT"
+                          style="-fx-padding:10 0 0 0;" prefWrapLength="860"/>
+
+            </VBox>
+
+            <!-- GAVETA DE PISTAS — painel lateral direito, oculto inicialmente -->
+            <HBox fx:id="gavetaPistas" visible="false" alignment="TOP_RIGHT">
+                <VBox fx:id="conteudoGaveta" spacing="0"
+                      style="-fx-background-color:rgba(20,12,4,0.96);
+                             -fx-border-color:#8b6914; -fx-border-width:0 0 0 2px;
+                             -fx-padding:0; -fx-min-width:340; -fx-max-width:340;
+                             -fx-pref-height:620;">
+
+                    <!-- Cabeçalho gaveta -->
+                    <HBox alignment="CENTER_LEFT" spacing="10"
+                          style="-fx-background-color:#1e1408; -fx-padding:12 16;
+                                 -fx-border-color:#8b6914; -fx-border-width:0 0 2px 0;">
+                        <Label text="📋  CADERNO DO DETETIVE"
+                               style="-fx-font-family:'Courier New'; -fx-font-weight:bold;
+                                      -fx-font-size:12px; -fx-text-fill:#c8a030;"
+                               HBox.hgrow="ALWAYS"/>
+                        <Button text="✕" onAction="#fecharGaveta"
+                                style="-fx-background-color:transparent; -fx-text-fill:#8b6914;
+                                       -fx-font-size:14px; -fx-cursor:hand; -fx-padding:0 4;"/>
+                    </HBox>
+
+                    <!-- Pistas coletadas: geradas dinamicamente -->
+                    <VBox fx:id="listaPistas" spacing="0"
+                          style="-fx-padding:8 0;"/>
+
+                    <!-- Botão acusar dentro da gaveta -->
+                    <VBox alignment="BOTTOM_CENTER" VBox.vgrow="ALWAYS"
+                          style="-fx-padding:12 16;">
+                        <Button text="⚖  FAZER ACUSAÇÃO" onAction="#acusar"
+                                styleClass="botao-carimbo" prefWidth="300"/>
+                    </VBox>
+                </VBox>
+            </HBox>
+
+        </StackPane>
     </center>
 
-    <!-- Rodapé: ações -->
+    <!-- RODAPÉ -->
     <bottom>
-        <HBox spacing="8" alignment="CENTER" styleClass="barra-rodape">
-            <Button text="INVENTÁRIO"  onAction="#abrirInventario" styleClass="botao-etiqueta"/>
-            <Button text="UPGRADES"    onAction="#abrirUpgrades"   styleClass="botao-etiqueta"/>
-            <Button text="LOJA"        onAction="#abrirLoja"       styleClass="botao-etiqueta"/>
-            <Label text="  |  " style="-fx-text-fill: #5a4020;"/>
-            <Button text="⚖  FAZER ACUSAÇÃO" onAction="#acusar"   styleClass="botao-carimbo"/>
-            <Label text="  |  " style="-fx-text-fill: #5a4020;"/>
-            <Button text="MENU"        onAction="#voltarMenu"      styleClass="botao-perigo"/>
+        <HBox spacing="10" alignment="CENTER" styleClass="barra-rodape">
+            <Button text="📋 CADERNO DE PISTAS" onAction="#toggleGaveta" styleClass="botao-etiqueta"/>
+            <Label text=" | " style="-fx-text-fill:#3a2a10;"/>
+            <Button text="🎒 INVENTÁRIO"  onAction="#abrirInventario" styleClass="botao-etiqueta"/>
+            <Button text="⬆ UPGRADES"    onAction="#abrirUpgrades"   styleClass="botao-etiqueta"/>
+            <Button text="🛒 LOJA"        onAction="#abrirLoja"       styleClass="botao-etiqueta"/>
+            <Label text=" | " style="-fx-text-fill:#3a2a10;"/>
+            <Button text="MENU"           onAction="#voltarMenu"      styleClass="botao-perigo"/>
         </HBox>
     </bottom>
 

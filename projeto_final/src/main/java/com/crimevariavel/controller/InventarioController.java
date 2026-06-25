@@ -15,8 +15,11 @@ import java.util.Map;
  
 public class InventarioController {
  
-    @FXML private VBox areaItens;
-    @FXML private Label labelJogador;
+    @FXML 
+    private VBox areaItens;
+    
+    @FXML 
+    private Label labelJogador;
  
     @FXML
     public void initialize() {

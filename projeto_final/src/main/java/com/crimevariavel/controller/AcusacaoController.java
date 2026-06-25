@@ -14,10 +14,17 @@ import javafx.scene.layout.VBox;
  
 public class AcusacaoController {
  
-    @FXML private VBox painelSuspeitos;
-    @FXML private Label labelResultado;
-    @FXML private Button botaoProximo;
-    @FXML private Button botaoMenu;
+    @FXML
+    private VBox painelSuspeitos;
+    
+    @FXML 
+    private Label labelResultado;
+    
+    @FXML 
+    private Button botaoProximo;
+    
+    @FXML 
+    private Button botaoMenu;
  
     private Caso caso;
  

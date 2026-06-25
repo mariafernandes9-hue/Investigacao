@@ -10,8 +10,11 @@ import javafx.scene.control.Label;
 
 public class RankingController {
 
-    @FXML private TextArea areaRanking;
-    @FXML private Label labelStatus;
+    @FXML
+    private TextArea areaRanking;
+    
+    @FXML 
+    private Label labelStatus;
 
 
     @FXML
