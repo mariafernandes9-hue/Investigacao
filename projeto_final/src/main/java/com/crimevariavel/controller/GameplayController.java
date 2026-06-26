@@ -67,7 +67,7 @@ public class GameplayController {
  
     // Mapeamento local → nome do arquivo de imagem
     private static final Map<String, String> IMAGENS_LOCAIS = Map.of(
-        "Recepção",   "recepao.png",
+        "Recepção",   "recepcao.png",
         "Restaurante","restaurante.png",
         "Quarto 201", "quarto201.png",
         "Jardim",     "jardim.png",
