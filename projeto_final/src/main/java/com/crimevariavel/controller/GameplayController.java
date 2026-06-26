@@ -1,6 +1,6 @@
 package com.crimevariavel.controller;
-
  
+
 import com.crimevariavel.dao.JogadorDAO;
 import com.crimevariavel.dao.UpgradeDAO;
 import com.crimevariavel.model.Caso;
@@ -30,45 +30,77 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
  
+
 public class GameplayController {
  
-    // ── Topo ──────────────────────────────────────────────────────────
-    @FXML private Label labelJogador;
-    @FXML private Label labelMoedas;
-    @FXML private Label labelCasos;
-    @FXML private Label labelDificuldade;
-    @FXML private Label labelStatus;
+    //TOPO
+    @FXML 
+    private Label labelJogador;
+    
+    @FXML
+    private Label labelMoedas;
+    
+    @FXML
+    private Label labelCasos;
+    
+    @FXML 
+    private Label labelDificuldade;
+    
+    @FXML 
+    private Label labelStatus;
  
-    // ── Centro ────────────────────────────────────────────────────────
-    @FXML private StackPane stackCentro;
-    @FXML private ImageView imagemCena;
-    @FXML private VBox overlayEscuro;
+    //CENTRO
+    @FXML
+    private StackPane stackCentro;
+    
+    @FXML 
+    private ImageView imagemCena;
+    
+    @FXML 
+    private VBox overlayEscuro;
+    
  
-    // Mapa
-    @FXML private VBox painelMapa;
-    @FXML private HBox painelSuspeitos;
+    //MAPA
+    @FXML
+    private VBox painelMapa;
+    
+    @FXML 
+    private HBox painelSuspeitos;
  
-    // Cena do local
-    @FXML private VBox painelCena;
-    @FXML private Label labelLocalAtual;
-    @FXML private Label labelTempo;
-    @FXML private FlowPane areaCartoes;
+    //cena do local
+    @FXML 
+    private VBox painelCena;
+    
+    @FXML
+    private Label labelLocalAtual;
+    
+    @FXML
+    private Label labelTempo;
+    
+    @FXML 
+    private FlowPane areaCartoes;
  
-    // Gaveta
-    @FXML private HBox gavetaPistas;
-    @FXML private ScrollPane scrollCaderno;
-    @FXML private VBox listaPistas;
+    //gaveta
+    @FXML
+    private HBox gavetaPistas;
+    
+    @FXML 
+    private ScrollPane scrollCaderno;
+    
+    @FXML
+    private VBox listaPistas;
+    
  
-    // ── Estado ────────────────────────────────────────────────────────
+    //ESTADO
     private Caso casoAtual;
     private Jogador jogador;
     private JogadorDAO jogadorDAO;
     private List<String> upgradesAtivos;
  
-    // Pistas já coletadas (para o caderno)
+    //pistas já coletadas (para o caderno)
     private final List<String> pistasCaderno = new ArrayList<>();
  
-    // Mapeamento local → nome do arquivo de imagem
+    //mapeamento local - nome do arquivo de imagem
     private static final Map<String, String> IMAGENS_LOCAIS = Map.of(
         "Recepção",   "recepcao.jpg",
         "Restaurante","restaurante.jpg",
@@ -78,7 +110,7 @@ public class GameplayController {
     );
     private static final String IMG_MAPA = "mapa_hotel.jpg";
  
-    // ── Inicialização ─────────────────────────────────────────────────
+    //inizilização
     @FXML
     public void initialize() {
         jogador    = SessaoJogador.getJogador();
@@ -105,14 +137,14 @@ public class GameplayController {
         construirSuspeitos();
         mostrarMapa();
  
-        // Faz a imagem preencher o centro dinamicamente
+        //isso faz a imagem preencher o centro dinamicamente
         imagemCena.fitWidthProperty().bind(stackCentro.widthProperty());
         imagemCena.fitHeightProperty().bind(stackCentro.heightProperty());
         overlayEscuro.prefWidthProperty().bind(stackCentro.widthProperty());
         overlayEscuro.prefHeightProperty().bind(stackCentro.heightProperty());
     }
  
-    // ── Topo ──────────────────────────────────────────────────────────
+    //TOPO
     private void atualizarTopo() {
         labelJogador.setText("Detetive: " + jogador.getNome());
         labelMoedas .setText("💰 " + jogador.getMoedas());
@@ -136,7 +168,7 @@ public class GameplayController {
         labelStatus.setText("  ▸ " + msg);
     }
  
-    // ── Caso ──────────────────────────────────────────────────────────
+    //Caso
     private void iniciarNovoCaso() {
         int casos = jogador.getCasosResolvidos();
         String dif = casos < 3 ? "facil" : casos < 7 ? "medio" : "dificil";
@@ -155,7 +187,7 @@ public class GameplayController {
         }
     }
  
-    // ── Mapa ──────────────────────────────────────────────────────────
+    //Mapa
     private void mostrarMapa() {
         carregarImagem(imagemCena, IMG_MAPA);
         painelMapa.setVisible(true);
@@ -177,7 +209,7 @@ public class GameplayController {
         }
     }
  
-    // ── Entrar num local ──────────────────────────────────────────────
+    //Entrar em um local
     @FXML
     private void entrarLocal(javafx.event.ActionEvent e) {
         Button btn = (Button) e.getSource();
@@ -186,7 +218,7 @@ public class GameplayController {
     }
  
     private void abrirCena(String local) {
-        // Imagem de fundo do local
+        //imagem de fundo do local
         String arquivo = IMAGENS_LOCAIS.getOrDefault(local, IMG_MAPA);
         carregarImagem(imagemCena, arquivo);
         overlayEscuro.setStyle("-fx-background-color:rgba(0,0,0,0.55);");
@@ -194,7 +226,7 @@ public class GameplayController {
         labelLocalAtual.setText("📍 " + local.toUpperCase());
         labelTempo.setText(casoAtual.getLinhaDoTempo());
  
-        // Pistas do local como cards
+        //pistas do local como cards
         areaCartoes.getChildren().clear();
         List<Pista> pistasDoLocal = casoAtual.getPistas().stream()
                 .filter(p -> p.getLocal().equals(local)).toList();
@@ -217,7 +249,7 @@ public class GameplayController {
         salvarMoedas();
         setStatus("Investigando " + local + ". +10 moedas.");
  
-        // Upgrade: Memória Fotográfica
+        //upgrade: Memória Fotográfica
         if (upgradesAtivos.contains("Memória Fotográfica")) {
             long verdadeiras = pistasDoLocal.stream()
                     .filter(p -> p.getTipo() == Pista.Tipo.VERDADEIRA).count();
@@ -228,12 +260,12 @@ public class GameplayController {
         }
     }
  
-    // Card visual de pista (papel manila com texto)
+    //card visual de pista (papel manila com texto)
     private VBox criarCardPista(Pista p) {
         VBox card = new VBox(6);
         card.getStyleClass().add("card-pista");
  
-        // Marcador de tipo (visível só com Faro Apurado)
+        //marcador de tipo (visível só com Faro Apurado)
         if (upgradesAtivos.contains("Faro Apurado")) {
             String marcador = switch (p.getTipo()) {
                 case VERDADEIRA -> "★ VERDADEIRA";
@@ -251,14 +283,14 @@ public class GameplayController {
             card.getChildren().add(tipo);
         }
  
-        // Texto da pista
+        //texto da pista
         Label texto = new Label(p.getDescricao());
         texto.setStyle("-fx-font-family:'Courier New'; -fx-font-size:11px; -fx-text-fill:#1a0a00;");
         texto.setWrapText(true);
         texto.setMaxWidth(220);
         card.getChildren().add(texto);
  
-        // Botão "Coletar"
+        //botão "Coletar"
         Button coletar = new Button("+ Coletar pista");
         coletar.setStyle(
             "-fx-background-color:transparent; -fx-text-fill:#8b0000; " +
@@ -285,7 +317,7 @@ public class GameplayController {
         setStatus("Escolha outro local ou interrogue um suspeito.");
     }
  
-    // ── Gaveta de pistas ──────────────────────────────────────────────
+    //guardar pistas
     @FXML
     private void toggleGaveta() {
         boolean aberta = gavetaPistas.isVisible();
@@ -330,7 +362,7 @@ public class GameplayController {
             listaPistas.getChildren().add(item);
         }
  
-        // Linha do tempo no final
+        //linha do tempo no final
         Label sep = new Label("─────────────────────────────");
         sep.setStyle("-fx-text-fill:#3a2a10; -fx-padding:6 16 0 16;");
         Label lt = new Label("⏱ " + casoAtual.getLinhaDoTempo());
@@ -344,9 +376,9 @@ public class GameplayController {
         javafx.application.Platform.runLater(() -> scrollCaderno.setVvalue(1.0));
     }
  
-    // ── Interrogatório ────────────────────────────────────────────────
+    //INTERROGATÒRIO
     private void interrogar(Suspeito s) {
-        // Fechar cena se estiver aberta, voltar ao mapa
+        //fechar cena se estiver aberta, voltar ao mapa
         mostrarMapa();
         gavetaPistas.setVisible(true);
         atualizarGaveta();
@@ -355,7 +387,7 @@ public class GameplayController {
         registro.append("[ INTERROGATÓRIO — ").append(s.getNome().toUpperCase()).append(" ]\n");
         registro.append("Personalidade: ").append(s.getPersonalidade()).append("\n");
  
-        // Upgrade: Olho Clínico
+        //upgrade: Olho Clínico
         if (upgradesAtivos.contains("Olho Clínico")) {
             String tipoAlibi = s.isCulpado() ? "⚠ FALSO"
                     : s.getAlibi().contains("Verificável") ? "✓ VERDADEIRO" : "~ PARCIAL";
@@ -365,7 +397,7 @@ public class GameplayController {
         }
         registro.append(s.getAlibi()).append("\n");
  
-        // Upgrade: Intimidação
+        //upgrade: Intimidação
         if (upgradesAtivos.contains("Intimidação")) {
             registro.append("★ [INTIMIDAÇÃO] ");
             registro.append(s.isCulpado()
@@ -381,7 +413,7 @@ public class GameplayController {
         setStatus("Interrogatório de " + s.getNome() + " registrado no caderno. +5 moedas.");
     }
  
-    // ── Focar suspeitos (atalho do rodapé) ───────────────────────────
+    //focar suspeitos (atalho do rodapé)
     @FXML
     private void focarSuspeitos() {
         mostrarMapa();
@@ -392,7 +424,7 @@ public class GameplayController {
         setStatus("Clique no nome de um suspeito para interrogar.");
     }
  
-    // ── Itens consumíveis do inventário ───────────────────────────────
+    //itens consumíveis do inventário
     private void aplicarEfeitoItem(String item) {
         switch (item) {
             case "Mandado de Busca" -> usarMandado();
@@ -435,7 +467,7 @@ public class GameplayController {
                 });
     }
  
-    // ── Imagem ────────────────────────────────────────────────────────
+    //IMAGEM
     private void carregarImagem(ImageView iv, String arquivo) {
         try {
             String path = "/com/crimevariavel/imagens/" + arquivo;
@@ -451,14 +483,14 @@ public class GameplayController {
         }
     }
  
-    // ── Moedas ────────────────────────────────────────────────────────
+    //moedas
     private void salvarMoedas() {
         jogadorDAO.atualizar(jogador);
         SessaoJogador.setJogador(jogador);
         labelMoedas.setText("💰 " + jogador.getMoedas());
     }
  
-    // ── Inventário (Stage separado) ───────────────────────────────────
+    //inventário (Stage separado) 
     @FXML
     public void abrirInventario() {
         try {
@@ -479,7 +511,7 @@ public class GameplayController {
         } catch (Exception e) { e.printStackTrace(); }
     }
  
-    // ── Navegação ─────────────────────────────────────────────────────
+    //navegação
     @FXML public void abrirBoss()     { SceneManager.navegar("boss"); }
     @FXML public void acusar() {
         SessaoJogador.setModoBoss(false);

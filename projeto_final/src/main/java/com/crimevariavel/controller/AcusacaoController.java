@@ -13,12 +13,20 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
  
+
 public class AcusacaoController {
  
-    @FXML private VBox painelSuspeitos;
-    @FXML private Label labelResultado;
-    @FXML private Button btnProximo;
-    @FXML private Button btnMenu;
+    @FXML 
+    private VBox painelSuspeitos;
+    
+    @FXML
+    private Label labelResultado;
+    
+    @FXML
+    private Button btnProximo;
+    
+    @FXML 
+    private Button btnMenu;
  
     private Caso caso;
  
@@ -28,7 +36,7 @@ public class AcusacaoController {
         btnProximo.setVisible(false);
         btnMenu.setVisible(false);
  
-        // Segurança: se não há caso ativo, volta ao menu
+        //segurança: se não há caso ativo, volta ao menu
         if (caso == null) {
             labelResultado.setText("Nenhum caso ativo. Voltando ao menu...");
             labelResultado.setStyle("-fx-font-family: 'Courier New'; -fx-text-fill: #8b0000; -fx-font-size: 13px;");
@@ -84,12 +92,14 @@ public class AcusacaoController {
         btnMenu.setVisible(true);
     }
  
-    @FXML public void proximoCaso() {
+    @FXML 
+    public void proximoCaso() {
         SessaoJogador.setCasoAtual(null);
         SceneManager.navegar("gameplay");
     }
  
-    @FXML public void voltarMenu() {
+    @FXML 
+    public void voltarMenu() {
         SessaoJogador.setCasoAtual(null);
         SceneManager.navegar("menu");
     }

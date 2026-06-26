@@ -1,5 +1,6 @@
 package com.crimevariavel.controller;
 
+
 import com.crimevariavel.dao.UpgradeDAO;
 import com.crimevariavel.model.Jogador;
 import com.crimevariavel.util.SessaoJogador;
@@ -13,6 +14,7 @@ import javafx.stage.Stage;
 import java.util.List;
 import java.util.Map;
  
+
 public class InventarioController {
  
     @FXML 
@@ -106,10 +108,10 @@ public class InventarioController {
     private void usarItem(String item) {
         if (!SessaoJogador.removerItem(item)) return;
  
-        //Sinaliza para o GameplayController qual item foi usado
+        //sinaliza para o GameplayController qual item foi usado
         SessaoJogador.setItemUsado(item);
  
-        //Fecha o inventário - o GameplayController detecta e aplica o efeito
+        //fecha o inventário - o GameplayController detecta e aplica o efeito
         fechar();
     }
  

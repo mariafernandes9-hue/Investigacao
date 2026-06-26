@@ -65,5 +65,6 @@ public class RankingController {
     }
 }
 
-    @FXML public void voltarMenu() { SceneManager.navegar("menu"); }
+    @FXML public void voltarMenu(){
+        SceneManager.navegar("menu"); }
 }

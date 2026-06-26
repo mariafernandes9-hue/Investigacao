@@ -1,6 +1,8 @@
 package com.crimevariavel.dao;
+
 import com.crimevariavel.util.ConnectionFactory;
 import java.sql.*;
+
 
 public class PartidaDAO {
     public void salvar(int idJogador, String resultado, int pontuacao, String dificuldade) {

@@ -50,13 +50,27 @@ public class UpgradesController {
         labelStatus.setText("'" + tipo + "' adquirido com sucesso!");
     }
  
-    @FXML public void comprarFaroApurado()      { comprar("Faro Apurado", 3); }
-    @FXML public void comprarIntimidacao()       { comprar("Intimidação", 3); }
-    @FXML public void comprarRedeContatos()      { comprar("Rede de Contatos", 4); }
-    @FXML public void comprarMemoriaFotografica(){ comprar("Memória Fotográfica", 5); }
-    @FXML public void comprarOlhoClinico()       { comprar("Olho Clínico", 5); }
+    @FXML public void comprarFaroApurado(){
+        comprar("Faro Apurado", 3); }
     
-    @FXML public void fecharJanela() { ((Stage) labelStatus.getScene().getWindow()).close(); }
-    @FXML public void voltarMenu()               { SceneManager.navegar("menu"); }
+    @FXML public void comprarIntimidacao(){
+        comprar("Intimidação", 3); }
+    
+    @FXML public void comprarRedeContatos(){
+        comprar("Rede de Contatos", 4); }
+    
+    @FXML public void comprarMemoriaFotografica(){
+        comprar("Memória Fotográfica", 5); }
+    
+    @FXML public void comprarOlhoClinico(){
+        comprar("Olho Clínico", 5); }
+    
+    @FXML
+    public void fecharJanela(){
+        ((Stage) labelStatus.getScene().getWindow()).close(); }
+    
+    @FXML 
+    public void voltarMenu(){
+        SceneManager.navegar("menu"); }
 }
  

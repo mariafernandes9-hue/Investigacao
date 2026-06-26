@@ -1,10 +1,12 @@
 package com.crimevariavel.dao;
 
+
 import com.crimevariavel.model.Jogador;
 import com.crimevariavel.util.ConnectionFactory;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class JogadorDAO {
     public void salvar(Jogador j) {

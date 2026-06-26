@@ -1,8 +1,10 @@
 package com.crimevariavel.dao;
+
 import com.crimevariavel.util.ConnectionFactory;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class UpgradeDAO {
     public void salvar(int idJogador, String tipo) {

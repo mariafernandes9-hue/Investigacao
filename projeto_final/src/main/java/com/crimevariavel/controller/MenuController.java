@@ -35,7 +35,12 @@ public class MenuController {
         SceneManager.navegar("gameplay");
     }
 
-    @FXML public void abrirRanking()  { SceneManager.navegar("ranking"); }
-    @FXML public void abrirCreditos() { SceneManager.navegar("creditos"); }
-    @FXML public void encerrar()      { Platform.exit(); }
+    @FXML public void abrirRanking(){
+        SceneManager.navegar("ranking"); }
+    
+    @FXML public void abrirCreditos(){
+        SceneManager.navegar("creditos"); }
+    
+    @FXML public void encerrar(){
+        Platform.exit(); }
 }

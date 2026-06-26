@@ -10,11 +10,17 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
  
+
 public class BossController {
  
-    @FXML private Label labelDescricao;
-    @FXML private Label labelStatus;
-    @FXML private Button btnIniciar;
+    @FXML 
+    private Label labelDescricao;
+    
+    @FXML 
+    private Label labelStatus;
+    
+    @FXML 
+    private Button btnIniciar;
  
     private static final int CASOS_NECESSARIOS = 5;
  
@@ -58,5 +64,7 @@ public class BossController {
         SceneManager.navegar("gameplay");
     }
  
-    @FXML public void voltarMenu() { SceneManager.navegar("menu"); }
+    @FXML 
+    public void voltarMenu(){ 
+        SceneManager.navegar("menu"); }
 }
