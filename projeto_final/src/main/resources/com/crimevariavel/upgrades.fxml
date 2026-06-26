@@ -5,10 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Button?>
 
-<VBox xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.crimevariavel.controller.UpgradesController"
-      alignment="CENTER" spacing="18"
-      styleClass="janela-modal" stylesheets="@estilo.css">
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="com.crimevariavel.controller.UpgradesController" alignment="CENTER" spacing="18" styleClass="janela-modal" stylesheets="@estilo.css">
 
     <Label text="FICHA DE HABILIDADES" styleClass="titulo-carimbo"/>
     <Label text="AGENTE — UPGRADES PERMANENTES"

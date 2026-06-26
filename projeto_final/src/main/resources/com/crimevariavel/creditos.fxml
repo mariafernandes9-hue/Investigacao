@@ -6,9 +6,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Button?>
 
-<BorderPane xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.crimevariavel.controller.CreditosController"
-      styleClass="fundo-cortica" stylesheets="@estilo.css">
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.crimevariavel.controller.CreditosController" styleClass="fundo-cortica" stylesheets="@estilo.css">
 
     <top>
         <VBox alignment="CENTER" spacing="0" style="-fx-padding: 24 0 0 0;">
