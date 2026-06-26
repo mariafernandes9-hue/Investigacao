@@ -1,26 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Button?>
 
-<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="com.crimevariavel.controller.BossController" alignment="CENTER" spacing="20" styleClass="fundo-cortica" stylesheets="@estilo.css">
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.crimevariavel.controller.BossController"
+      styleClass="fundo-cortica" stylesheets="@estilo.css">
 
-    <Label text="⚠  CASO MÁXIMO SIGILO  ⚠" style="-fx-font-family: 'Courier New'; -fx-font-size: 13px; -fx-text-fill: #8b0000; -fx-letter-spacing: 4px;"/>
-    <Label text="O GRANDE CRIME" style="-fx-font-family: 'Courier New'; -fx-font-size: 40px; -fx-font-weight: bold; -fx-text-fill: #8b0000;"/>
-    <Label text="────────────────────────────────────────────────" styleClass="separador"/>
+    <top>
+        <VBox alignment="CENTER" spacing="10" style="-fx-padding: 40 0 10 0;">
+            <Label text="⚠  CASO MÁXIMO SIGILO  ⚠"
+                   style="-fx-font-family: 'Courier New'; -fx-font-size: 13px;
+                          -fx-text-fill: #8b0000; -fx-letter-spacing: 4px;"/>
+            <Label text="O GRANDE CRIME"
+                   style="-fx-font-family: 'Courier New'; -fx-font-size: 40px;
+                          -fx-font-weight: bold; -fx-text-fill: #8b0000;"/>
+            <Label text="────────────────────────────────────────────────" styleClass="separador"/>
+        </VBox>
+    </top>
 
-    <VBox styleClass="papel" maxWidth="520" alignment="CENTER" spacing="10">
-        <Label text="BRIEFING CONFIDENCIAL" style="-fx-font-family: 'Courier New'; -fx-font-weight: bold; -fx-text-fill: #5a0000; -fx-font-size: 12px;"/>
-        <Label fx:id="labelDescricao" wrapText="true" maxWidth="460"  style="-fx-font-family: 'Courier New'; -fx-font-size: 13px; -fx-text-fill: #1a0a00;" alignment="CENTER"/>
-        <Label fx:id="labelStatus" style="-fx-font-family: 'Courier New'; -fx-font-size: 11px; -fx-text-fill: #8b6914;"/>
-    </VBox>
+    <center>
+        <VBox alignment="CENTER" spacing="20" style="-fx-padding: 20;">
+            <VBox styleClass="papel" maxWidth="520" alignment="CENTER" spacing="10">
+                <Label text="BRIEFING CONFIDENCIAL"
+                       style="-fx-font-family: 'Courier New'; -fx-font-weight: bold;
+                              -fx-text-fill: #5a0000; -fx-font-size: 12px;"/>
+                <Label fx:id="labelDescricao" wrapText="true" maxWidth="460"
+                       style="-fx-font-family: 'Courier New'; -fx-font-size: 13px;
+                              -fx-text-fill: #1a0a00;" alignment="CENTER"/>
+                <Label fx:id="labelStatus"
+                       style="-fx-font-family: 'Courier New'; -fx-font-size: 11px;
+                              -fx-text-fill: #8b6914;"/>
+            </VBox>
+        </VBox>
+    </center>
 
-    <Label text="────────────────────────────────────────────────" styleClass="separador"/>
+    <bottom>
+        <HBox spacing="20" alignment="CENTER" style="-fx-padding: 30;">
+            <Button fx:id="btnIniciar" text="▶  ACEITAR O CASO" onAction="#iniciarBossFinal"
+                    prefWidth="220" prefHeight="45" styleClass="botao-carimbo"/>
+            <Button text="◀  ARQUIVAR / MENU" onAction="#voltarMenu"
+                    prefWidth="200" prefHeight="45" styleClass="botao-etiqueta"/>
+        </HBox>
+    </bottom>
 
-    <HBox spacing="20" alignment="CENTER">
-        <Button fx:id="botaoIniciar" text="▶  ACEITAR O CASO" onAction="#iniciarBossFinal" prefWidth="220" prefHeight="45" styleClass="botao-carimbo"/>
-        <Button text="◀  ARQUIVAR / MENU" onAction="#voltarMenu" prefWidth="200" prefHeight="45" styleClass="botao-etiqueta"/>
-    </HBox>
-
-</VBox>
+</BorderPane>

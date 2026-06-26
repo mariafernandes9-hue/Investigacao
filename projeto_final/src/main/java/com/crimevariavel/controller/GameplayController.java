@@ -1,5 +1,6 @@
 package com.crimevariavel.controller;
 
+ 
 import com.crimevariavel.dao.JogadorDAO;
 import com.crimevariavel.dao.UpgradeDAO;
 import com.crimevariavel.model.Caso;
@@ -19,6 +20,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Modality;
@@ -54,6 +56,7 @@ public class GameplayController {
  
     // Gaveta
     @FXML private HBox gavetaPistas;
+    @FXML private ScrollPane scrollCaderno;
     @FXML private VBox listaPistas;
  
     // ── Estado ────────────────────────────────────────────────────────
@@ -67,13 +70,13 @@ public class GameplayController {
  
     // Mapeamento local → nome do arquivo de imagem
     private static final Map<String, String> IMAGENS_LOCAIS = Map.of(
-        "Recepção",   "recepcao.png",
-        "Restaurante","restaurante.png",
-        "Quarto 201", "quarto201.png",
-        "Jardim",     "jardim.png",
-        "Garagem",    "garagem.png"
+        "Recepção",   "recepcao.jpg",
+        "Restaurante","restaurante.jpg",
+        "Quarto 201", "quarto201.jpg",
+        "Jardim",     "jardim.jpg",
+        "Garagem",    "garagem.jpg"
     );
-    private static final String IMG_MAPA = "mapa_hotel.jng";
+    private static final String IMG_MAPA = "mapa_hotel.jpg";
  
     // ── Inicialização ─────────────────────────────────────────────────
     @FXML
@@ -86,7 +89,14 @@ public class GameplayController {
  
         if (SessaoJogador.getCasoAtual() != null) {
             casoAtual = SessaoJogador.getCasoAtual();
-            setStatus("Caso retomado. Escolha um local para investigar.");
+            if (SessaoJogador.isModoBoss()) {
+                setStatus("⚠ O GRANDE CRIME — máxima dificuldade. Boa sorte.");
+                labelStatus.setStyle(
+                    "-fx-font-family:'Courier New'; -fx-font-size:13px; " +
+                    "-fx-text-fill:#8b0000; -fx-font-weight:bold; -fx-font-style:italic;");
+            } else {
+                setStatus("Caso retomado. Escolha um local para investigar.");
+            }
         } else {
             iniciarNovoCaso();
         }
@@ -329,6 +339,9 @@ public class GameplayController {
         lt.setWrapText(true);
         lt.setMaxWidth(300);
         listaPistas.getChildren().addAll(sep, lt);
+ 
+        // Rola para o final automaticamente
+        javafx.application.Platform.runLater(() -> scrollCaderno.setVvalue(1.0));
     }
  
     // ── Interrogatório ────────────────────────────────────────────────
@@ -468,7 +481,10 @@ public class GameplayController {
  
     // ── Navegação ─────────────────────────────────────────────────────
     @FXML public void abrirBoss()     { SceneManager.navegar("boss"); }
-    @FXML public void acusar()        { SceneManager.navegar("acusacao"); }
+    @FXML public void acusar() {
+        SessaoJogador.setModoBoss(false);
+        SceneManager.navegar("acusacao");
+    }
     @FXML public void abrirUpgrades() {
         try {
             FXMLLoader loader = new FXMLLoader(

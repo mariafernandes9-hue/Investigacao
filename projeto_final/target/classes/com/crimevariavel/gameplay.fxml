@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.control.Label?>
@@ -9,41 +9,33 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.FlowPane?>
 
-<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.crimevariavel.controller.GameplayController" prefWidth="900" prefHeight="620" stylesheets="@estilo.css">
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.crimevariavel.controller.GameplayController"
+            prefWidth="900" prefHeight="620"
+            stylesheets="@estilo.css">
 
     <!-- TOPO: barra de status -->
     <top>
         <HBox alignment="CENTER_LEFT" spacing="20" styleClass="barra-topo">
-            
             <Label text="◈ CRIME VARIÁVEL"
                    style="-fx-font-family:'Courier New'; -fx-font-weight:bold;
                           -fx-text-fill:#8b0000; -fx-font-size:15px;"/>
-            
             <Label text="|" style="-fx-text-fill:#3a2a10;"/>
-            
             <Label fx:id="labelJogador"
                    style="-fx-font-family:'Courier New'; -fx-text-fill:#f0dfa8; -fx-font-size:12px;"/>
-            
             <Label text="|" style="-fx-text-fill:#3a2a10;"/>
-            
             <Label fx:id="labelMoedas"
                    style="-fx-font-family:'Courier New'; -fx-text-fill:#c8a030; -fx-font-size:12px;"/>
-            
             <Label text="|" style="-fx-text-fill:#3a2a10;"/>
-            
             <Label fx:id="labelCasos"
                    style="-fx-font-family:'Courier New'; -fx-text-fill:#8b6914; -fx-font-size:12px;"/>
-            
             <Label text="|" style="-fx-text-fill:#3a2a10;"/>
-            
             <Label fx:id="labelDificuldade"
                    style="-fx-font-family:'Courier New'; -fx-font-size:12px; -fx-font-weight:bold;"/>
-            
             <Label fx:id="labelStatus"
                    style="-fx-font-family:'Courier New'; -fx-font-size:11px;
                           -fx-text-fill:#8b6914; -fx-font-style:italic;"
                    HBox.hgrow="ALWAYS"/>
-            
             <Button text="⚠ BOSS" onAction="#abrirBoss"
                     style="-fx-background-color:#8b0000; -fx-text-fill:#f0dfa8;
                            -fx-font-family:'Courier New'; -fx-font-weight:bold;
@@ -59,13 +51,14 @@
 
             <!-- Imagem de fundo do hotel / cena atual -->
             <ImageView fx:id="imagemCena"
-                       fitWidth="900" fitHeight="520"
-                       preserveRatio="false"/>
+                       fitWidth="900" fitHeight="480"
+                       preserveRatio="false" VBox.vgrow="ALWAYS"/>
 
             <!-- Overlay escuro para legibilidade -->
             <VBox fx:id="overlayEscuro"
                   style="-fx-background-color:rgba(0,0,0,0.45);"
-                  prefWidth="900" prefHeight="520"/>
+                  prefWidth="900" VBox.vgrow="ALWAYS"
+                  StackPane.alignment="TOP_LEFT" maxHeight="1.7976931348623157E308"/>
 
             <!-- Painel do MAPA (locais como portas) — visível na tela inicial -->
             <VBox fx:id="painelMapa" alignment="CENTER" spacing="30"
@@ -143,9 +136,12 @@
                                        -fx-font-size:14px; -fx-cursor:hand; -fx-padding:0 4;"/>
                     </HBox>
 
-                    <!-- Pistas coletadas: geradas dinamicamente -->
-                    <VBox fx:id="listaPistas" spacing="0"
-                          style="-fx-padding:8 0;"/>
+                    <!-- Pistas coletadas com scroll -->
+                    <ScrollPane fx:id="scrollCaderno" VBox.vgrow="ALWAYS" fitToWidth="true"
+                                style="-fx-background:transparent; -fx-background-color:transparent;
+                                       -fx-border-color:transparent;">
+                        <VBox fx:id="listaPistas" spacing="0" style="-fx-padding:8 0;"/>
+                    </ScrollPane>
 
                     <!-- Botão acusar dentro da gaveta -->
                     <VBox alignment="BOTTOM_CENTER" VBox.vgrow="ALWAYS"

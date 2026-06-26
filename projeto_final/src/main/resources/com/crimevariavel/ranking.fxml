@@ -1,26 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TextArea?>
 
-<VBox xmlns:fx="http://javafx.com/fxml"
+<BorderPane xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.crimevariavel.controller.RankingController"
-      alignment="CENTER" spacing="18" prefWidth="800" prefHeight="600"
       styleClass="fundo-cortica" stylesheets="@estilo.css">
 
-    <Label text="QUADRO DE HONRA" styleClass="titulo-carimbo"/>
-    <Label text="DETETIVES — CASOS SOLUCIONADOS COM SUCESSO"
-           style="-fx-font-family: 'Courier New'; -fx-font-size: 11px; -fx-text-fill: #8b6914;"/>
-    <Label text="──────────────────────────────────────────────────" styleClass="separador"/>
+    <top>
+        <VBox alignment="CENTER" spacing="10" style="-fx-padding: 30 0 10 0;">
+            <Label text="QUADRO DE HONRA" styleClass="titulo-carimbo"/>
+            <Label text="DETETIVES — CASOS SOLUCIONADOS COM SUCESSO"
+                   style="-fx-font-family: 'Courier New'; -fx-font-size: 11px; -fx-text-fill: #8b6914;"/>
+            <Label text="──────────────────────────────────────────────────" styleClass="separador"/>
+        </VBox>
+    </top>
 
-    <TextArea fx:id="areaRanking" editable="false"
-              prefWidth="580" prefHeight="350"
-              style="-fx-font-family: 'Courier New'; -fx-font-size: 13px;"/>
-    
-    <Button text="EXPORTAR CSV" onAction="#exportarCSV" prefWidth="220" styleClass="botao-carimbo"/>
-    <Label fx:id="labelStatus" styleClass="label-destaque"/>
+    <center>
+        <VBox alignment="CENTER" spacing="12" style="-fx-padding: 0 60 0 60;">
+            <TextArea fx:id="areaRanking" editable="false"
+                      VBox.vgrow="ALWAYS"
+                      style="-fx-font-family: 'Courier New'; -fx-font-size: 13px;"/>
+            <Label fx:id="labelStatus" styleClass="label-destaque"/>
+        </VBox>
+    </center>
 
-    <Button text="◀  VOLTAR AO MENU" onAction="#voltarMenu" prefWidth="220" styleClass="botao-etiqueta"/>
+    <bottom>
+        <HBox spacing="16" alignment="CENTER" style="-fx-padding: 20;">
+            <Button text="EXPORTAR CSV" onAction="#exportarCSV" prefWidth="200" styleClass="botao-carimbo"/>
+            <Button text="◀  VOLTAR AO MENU" onAction="#voltarMenu" prefWidth="200" styleClass="botao-etiqueta"/>
+        </HBox>
+    </bottom>
 
-</VBox>
+</BorderPane>

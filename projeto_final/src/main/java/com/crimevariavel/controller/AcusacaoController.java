@@ -1,5 +1,6 @@
 package com.crimevariavel.controller;
  
+
 import com.crimevariavel.dao.JogadorDAO;
 import com.crimevariavel.dao.PartidaDAO;
 import com.crimevariavel.model.Caso;
@@ -14,31 +15,33 @@ import javafx.scene.layout.VBox;
  
 public class AcusacaoController {
  
-    @FXML
-    private VBox painelSuspeitos;
-    
-    @FXML 
-    private Label labelResultado;
-    
-    @FXML 
-    private Button botaoProximo;
-    
-    @FXML 
-    private Button botaoMenu;
+    @FXML private VBox painelSuspeitos;
+    @FXML private Label labelResultado;
+    @FXML private Button btnProximo;
+    @FXML private Button btnMenu;
  
     private Caso caso;
  
     @FXML
     public void initialize() {
         caso = SessaoJogador.getCasoAtual();
-        botaoProximo.setVisible(false);
-        botaoMenu.setVisible(false);
+        btnProximo.setVisible(false);
+        btnMenu.setVisible(false);
+ 
+        // Segurança: se não há caso ativo, volta ao menu
+        if (caso == null) {
+            labelResultado.setText("Nenhum caso ativo. Voltando ao menu...");
+            labelResultado.setStyle("-fx-font-family: 'Courier New'; -fx-text-fill: #8b0000; -fx-font-size: 13px;");
+            btnMenu.setVisible(true);
+            return;
+        }
  
         for (Suspeito s : caso.getSuspeitos()) {
-            Button botao = new Button(s.getNome());
-            botao.setPrefWidth(280);
-            botao.setOnAction(e -> acusar(s));
-            painelSuspeitos.getChildren().add(botao);
+            Button btn = new Button(s.getNome());
+            btn.setPrefWidth(280);
+            btn.getStyleClass().add("botao-etiqueta");
+            btn.setOnAction(e -> acusar(s));
+            painelSuspeitos.getChildren().add(btn);
         }
     }
  
@@ -53,7 +56,6 @@ public class AcusacaoController {
                 case "medio"   -> 150;
                 default        -> 100;
             };
- 
             jogador.setMoedas(jogador.getMoedas() + bonus);
             jogador.setPontosUpgrade(jogador.getPontosUpgrade() + 3);
             jogador.setCasosResolvidos(jogador.getCasosResolvidos() + 1);
@@ -77,14 +79,18 @@ public class AcusacaoController {
             );
         }
  
-        // Limpa o caso da sessão — run encerrada
-        SessaoJogador.setCasoAtual(null);
- 
         painelSuspeitos.setDisable(true);
-        botaoProximo.setVisible(true);
-        botaoMenu.setVisible(true);
+        btnProximo.setVisible(true);
+        btnMenu.setVisible(true);
     }
  
-    @FXML public void proximoCaso() { SceneManager.navegar("gameplay"); }
-    @FXML public void voltarMenu()  { SceneManager.navegar("menu"); }
+    @FXML public void proximoCaso() {
+        SessaoJogador.setCasoAtual(null);
+        SceneManager.navegar("gameplay");
+    }
+ 
+    @FXML public void voltarMenu() {
+        SessaoJogador.setCasoAtual(null);
+        SceneManager.navegar("menu");
+    }
 }

@@ -7,8 +7,13 @@ import java.util.Map;
  
 //gerado por ia 
 
+
+import com.crimevariavel.model.Caso;
+import com.crimevariavel.model.Jogador;
+import java.util.HashMap;
+import java.util.Map;
+ 
 public class SessaoJogador {
-    
     private static Jogador jogador;
     private static Caso casoAtual;
     private static int moedasRun;
@@ -42,18 +47,17 @@ public class SessaoJogador {
         return true;
     }
  
-    public static Map<String, Integer> getInventario(){
-        return inventario; }
+    public static Map<String, Integer> getInventario() { return inventario; }
  
     public static void limparInventario() { inventario.clear(); }
  
-    public static void setItemUsado(String item){
-        itemUsadoRecentemente = item; }
-    
-    public static String getItemUsado(){ 
-        return itemUsadoRecentemente; }
-    
-    public static void limparItemUsado(){ 
-        itemUsadoRecentemente = null; }
+    private static boolean modoBoss = false;
+ 
+    public static void setModoBoss(boolean b)       { modoBoss = b; }
+    public static boolean isModoBoss()              { return modoBoss; }
+ 
+    public static void setItemUsado(String item)    { itemUsadoRecentemente = item; }
+    public static String getItemUsado()             { return itemUsadoRecentemente; }
+    public static void limparItemUsado()            { itemUsadoRecentemente = null; }
 }
  
