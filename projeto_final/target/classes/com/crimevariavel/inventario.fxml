@@ -4,10 +4,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ScrollPane?>
 
-<VBox xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.crimevariavel.controller.InventarioController"
-      spacing="15" prefWidth="580" prefHeight="500"
-      styleClass="janela-modal" stylesheets="@estilo.css">
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="com.crimevariavel.controller.InventarioController" spacing="15" prefWidth="580" prefHeight="500" styleClass="janela-modal" stylesheets="@estilo.css">
 
     <Label text="INVENTÁRIO DO AGENTE"
            style="-fx-font-family: 'Courier New'; -fx-font-size: 20px;

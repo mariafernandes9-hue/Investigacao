@@ -33,7 +33,7 @@
         
         <HBox spacing="20" alignment="CENTER" style="-fx-padding: 20;">
             
-            <Button fx:id="btnProximo" text="PRÓXIMO CASO ▶" onAction="#proximoCaso" prefWidth="200" styleClass="botao-carimbo"/>
+            <Button fx:id="btnProximo" text="PRÓXIMO CASO " onAction="#proximoCaso" prefWidth="200" styleClass="botao-carimbo"/>
             <Button fx:id="btnMenu"   text="ARQUIVAR / MENU" onAction="#voltarMenu" prefWidth="200" styleClass="botao-etiqueta"/>
             
         </HBox>

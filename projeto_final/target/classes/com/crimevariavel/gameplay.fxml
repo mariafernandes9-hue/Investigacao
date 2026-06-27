@@ -9,10 +9,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.FlowPane?>
 
-<BorderPane xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.crimevariavel.controller.GameplayController"
-            prefWidth="900" prefHeight="620"
-            stylesheets="@estilo.css">
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.crimevariavel.controller.GameplayController" prefWidth="900" prefHeight="620" stylesheets="@estilo.css">
 
     <!-- TOPO: barra de status -->
     <top>

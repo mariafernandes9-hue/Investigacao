@@ -6,12 +6,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.Separator?>
 
-<VBox xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.crimevariavel.controller.MenuController"
-      alignment="CENTER" spacing="0"
-      prefWidth="800" prefHeight="600"
-      styleClass="fundo-cortica"
-      stylesheets="@estilo.css">
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="com.crimevariavel.controller.MenuController" alignment="CENTER" spacing="0" prefWidth="800" prefHeight="600" styleClass="fundo-cortica" stylesheets="@estilo.css">
 
     <!-- Cabeçalho do "arquivo" -->
     <VBox alignment="CENTER" spacing="4" style="-fx-padding: 0 0 25 0;">

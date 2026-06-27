@@ -5,37 +5,39 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Button?>
 
-<BorderPane xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.crimevariavel.controller.AcusacaoController"
-      styleClass="fundo-cortica" stylesheets="@estilo.css">
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.crimevariavel.controller.AcusacaoController" styleClass="fundo-cortica" stylesheets="@estilo.css">
 
     <top>
         <VBox alignment="CENTER" spacing="10" style="-fx-padding: 30 0 10 0;">
+            
             <Label text="FORMULÁRIO DE ACUSAÇÃO" styleClass="titulo-carimbo"/>
-            <Label text="Nº CASO: ????  |  SELECIONE O SUSPEITO"
-                   style="-fx-font-family: 'Courier New'; -fx-font-size: 11px; -fx-text-fill: #8b6914;"/>
+            <Label text="Nº CASO: ????  |  SELECIONE O SUSPEITO" style="-fx-font-family: 'Courier New'; -fx-font-size: 11px; -fx-text-fill: #8b6914;"/>
             <Label text="────────────────────────────────────────────" styleClass="separador"/>
+            
         </VBox>
     </top>
 
     <center>
         <VBox alignment="CENTER" spacing="20" style="-fx-padding: 20;">
-            <VBox fx:id="painelSuspeitos" spacing="8" alignment="CENTER"
-                  styleClass="papel" maxWidth="450"/>
+            
+            <VBox fx:id="painelSuspeitos" spacing="8" alignment="CENTER" styleClass="papel" maxWidth="450"/>
             <Label text="────────────────────────────────────────────" styleClass="separador"/>
             <Label fx:id="labelResultado" wrapText="true" maxWidth="550"
                    style="-fx-font-family: 'Courier New'; -fx-font-size: 14px; -fx-text-fill: #2a1a05;"
                    alignment="CENTER"/>
+            
         </VBox>
     </center>
 
     <bottom>
+        
         <HBox spacing="20" alignment="CENTER" style="-fx-padding: 20;">
-            <Button fx:id="btnProximo" text="PRÓXIMO CASO ▶" onAction="#proximoCaso"
-                    prefWidth="200" styleClass="botao-carimbo"/>
-            <Button fx:id="btnMenu"   text="ARQUIVAR / MENU" onAction="#voltarMenu"
-                    prefWidth="200" styleClass="botao-etiqueta"/>
+            
+            <Button fx:id="btnProximo" text="PRÓXIMO CASO " onAction="#proximoCaso" prefWidth="200" styleClass="botao-carimbo"/>
+            <Button fx:id="btnMenu"   text="ARQUIVAR / MENU" onAction="#voltarMenu" prefWidth="200" styleClass="botao-etiqueta"/>
+            
         </HBox>
+        
     </bottom>
 
 </BorderPane>

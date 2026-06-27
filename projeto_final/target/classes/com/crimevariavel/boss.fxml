@@ -5,12 +5,12 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Button?>
 
-<BorderPane xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.crimevariavel.controller.BossController"
-      styleClass="fundo-cortica" stylesheets="@estilo.css">
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.crimevariavel.controller.BossController" styleClass="fundo-cortica" stylesheets="@estilo.css">
 
     <top>
+        
         <VBox alignment="CENTER" spacing="10" style="-fx-padding: 40 0 10 0;">
+            
             <Label text="⚠  CASO MÁXIMO SIGILO  ⚠"
                    style="-fx-font-family: 'Courier New'; -fx-font-size: 13px;
                           -fx-text-fill: #8b0000; -fx-letter-spacing: 4px;"/>
@@ -18,10 +18,13 @@
                    style="-fx-font-family: 'Courier New'; -fx-font-size: 40px;
                           -fx-font-weight: bold; -fx-text-fill: #8b0000;"/>
             <Label text="────────────────────────────────────────────────" styleClass="separador"/>
+            
         </VBox>
+        
     </top>
 
     <center>
+        
         <VBox alignment="CENTER" spacing="20" style="-fx-padding: 20;">
             <VBox styleClass="papel" maxWidth="520" alignment="CENTER" spacing="10">
                 <Label text="BRIEFING CONFIDENCIAL"
@@ -35,15 +38,18 @@
                               -fx-text-fill: #8b6914;"/>
             </VBox>
         </VBox>
+        
     </center>
 
     <bottom>
+        
         <HBox spacing="20" alignment="CENTER" style="-fx-padding: 30;">
-            <Button fx:id="btnIniciar" text="▶  ACEITAR O CASO" onAction="#iniciarBossFinal"
-                    prefWidth="220" prefHeight="45" styleClass="botao-carimbo"/>
-            <Button text="◀  ARQUIVAR / MENU" onAction="#voltarMenu"
-                    prefWidth="200" prefHeight="45" styleClass="botao-etiqueta"/>
+            
+            <Button fx:id="btnIniciar" text="▶  ACEITAR O CASO" onAction="#iniciarBossFinal" prefWidth="220" prefHeight="45" styleClass="botao-carimbo"/>
+            <Button text="◀  ARQUIVAR / MENU" onAction="#voltarMenu" prefWidth="200" prefHeight="45" styleClass="botao-etiqueta"/>
+            
         </HBox>
+        
     </bottom>
 
 </BorderPane>
